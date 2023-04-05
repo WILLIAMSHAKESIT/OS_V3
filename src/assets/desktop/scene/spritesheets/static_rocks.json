@@ -1,0 +1,135 @@
+{
+	"frames": {
+		"Left_rock_2nd.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 392,
+				"h": 303
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 392,
+				"h": 303
+			},
+			"sourceSize": {
+				"w": 392,
+				"h": 303
+			}
+		},
+		"Left_rock_front.png": {
+			"frame": {
+				"x": 395,
+				"y": 1,
+				"w": 372,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 372,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 372,
+				"h": 198
+			}
+		},
+		"Left_tube_coral_1.png": {
+			"frame": {
+				"x": 769,
+				"y": 1,
+				"w": 202,
+				"h": 179
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 202,
+				"h": 179
+			},
+			"sourceSize": {
+				"w": 202,
+				"h": 179
+			}
+		},
+		"right_behind_rock.png": {
+			"frame": {
+				"x": 973,
+				"y": 1,
+				"w": 253,
+				"h": 126
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 253,
+				"h": 126
+			},
+			"sourceSize": {
+				"w": 253,
+				"h": 126
+			}
+		},
+		"right_rock_front.png": {
+			"frame": {
+				"x": 1228,
+				"y": 1,
+				"w": 352,
+				"h": 190
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 352,
+				"h": 190
+			},
+			"sourceSize": {
+				"w": 352,
+				"h": 190
+			}
+		},
+		"right_tube.png": {
+			"frame": {
+				"x": 1582,
+				"y": 1,
+				"w": 201,
+				"h": 164
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 201,
+				"h": 164
+			},
+			"sourceSize": {
+				"w": 201,
+				"h": 164
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "static_rocks.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1784,
+			"h": 305
+		},
+		"scale": "1"
+	}
+}

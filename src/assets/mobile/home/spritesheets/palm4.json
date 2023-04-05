@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"palm4_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00001.png": {
+			"frame": {
+				"x": 239,
+				"y": 1,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00002.png": {
+			"frame": {
+				"x": 477,
+				"y": 1,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00003.png": {
+			"frame": {
+				"x": 1,
+				"y": 233,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00004.png": {
+			"frame": {
+				"x": 239,
+				"y": 233,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00005.png": {
+			"frame": {
+				"x": 477,
+				"y": 233,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00006.png": {
+			"frame": {
+				"x": 1,
+				"y": 465,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00007.png": {
+			"frame": {
+				"x": 239,
+				"y": 465,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00008.png": {
+			"frame": {
+				"x": 477,
+				"y": 465,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00009.png": {
+			"frame": {
+				"x": 1,
+				"y": 697,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00010.png": {
+			"frame": {
+				"x": 239,
+				"y": 697,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00011.png": {
+			"frame": {
+				"x": 477,
+				"y": 697,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00012.png": {
+			"frame": {
+				"x": 715,
+				"y": 1,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00013.png": {
+			"frame": {
+				"x": 715,
+				"y": 233,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00014.png": {
+			"frame": {
+				"x": 715,
+				"y": 465,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		},
+		"palm4_00015.png": {
+			"frame": {
+				"x": 715,
+				"y": 697,
+				"w": 236,
+				"h": 230
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 230
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 230
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "palm4.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 952,
+			"h": 928
+		},
+		"scale": "1"
+	}
+}

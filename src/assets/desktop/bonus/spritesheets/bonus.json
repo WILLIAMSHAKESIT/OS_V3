@@ -1,0 +1,95 @@
+{
+	"frames": {
+		"accept_button.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 100,
+				"h": 40
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 100,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 100,
+				"h": 40
+			}
+		},
+		"bonus_frame.png": {
+			"frame": {
+				"x": 1,
+				"y": 43,
+				"w": 1000,
+				"h": 574
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1000,
+				"h": 574
+			},
+			"sourceSize": {
+				"w": 1000,
+				"h": 574
+			}
+		},
+		"close_clam.png": {
+			"frame": {
+				"x": 1,
+				"y": 619,
+				"w": 250,
+				"h": 115
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 250,
+				"h": 115
+			},
+			"sourceSize": {
+				"w": 250,
+				"h": 115
+			}
+		},
+		"reject_button.png": {
+			"frame": {
+				"x": 103,
+				"y": 1,
+				"w": 100,
+				"h": 40
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 100,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 100,
+				"h": 40
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "bonus.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1002,
+			"h": 735
+		},
+		"scale": "1"
+	}
+}

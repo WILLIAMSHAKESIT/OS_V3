@@ -1,0 +1,75 @@
+{
+	"frames": {
+		"Left_rock_corals.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 543,
+				"h": 990
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 543,
+				"h": 990
+			},
+			"sourceSize": {
+				"w": 543,
+				"h": 990
+			}
+		},
+		"right_coral_2.png": {
+			"frame": {
+				"x": 546,
+				"y": 1,
+				"w": 269,
+				"h": 53
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 269,
+				"h": 53
+			},
+			"sourceSize": {
+				"w": 269,
+				"h": 53
+			}
+		},
+		"right_rock_corals.png": {
+			"frame": {
+				"x": 817,
+				"y": 1,
+				"w": 534,
+				"h": 858
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 534,
+				"h": 858
+			},
+			"sourceSize": {
+				"w": 534,
+				"h": 858
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "static_corals.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1352,
+			"h": 992
+		},
+		"scale": "1"
+	}
+}

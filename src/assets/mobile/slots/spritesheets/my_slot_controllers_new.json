@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"autoplay_btn.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 169,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 169,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 169,
+				"h": 169
+			}
+		},
+		"bet_modal.png": {
+			"frame": {
+				"x": 172,
+				"y": 1,
+				"w": 222,
+				"h": 75
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 222,
+				"h": 75
+			},
+			"sourceSize": {
+				"w": 222,
+				"h": 75
+			}
+		},
+		"bet_modal_clicked.png": {
+			"frame": {
+				"x": 396,
+				"y": 1,
+				"w": 222,
+				"h": 75
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 222,
+				"h": 75
+			},
+			"sourceSize": {
+				"w": 222,
+				"h": 75
+			}
+		},
+		"info_btn.png": {
+			"frame": {
+				"x": 172,
+				"y": 78,
+				"w": 109,
+				"h": 109
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 109,
+				"h": 109
+			},
+			"sourceSize": {
+				"w": 109,
+				"h": 109
+			}
+		},
+		"lets_roll.png": {
+			"frame": {
+				"x": 1,
+				"y": 189,
+				"w": 544,
+				"h": 117
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 544,
+				"h": 117
+			},
+			"sourceSize": {
+				"w": 544,
+				"h": 117
+			}
+		},
+		"lets_roll_clicked.png": {
+			"frame": {
+				"x": 1,
+				"y": 308,
+				"w": 544,
+				"h": 117
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 544,
+				"h": 117
+			},
+			"sourceSize": {
+				"w": 544,
+				"h": 117
+			}
+		},
+		"menu_btn.png": {
+			"frame": {
+				"x": 283,
+				"y": 78,
+				"w": 192,
+				"h": 92
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 192,
+				"h": 92
+			},
+			"sourceSize": {
+				"w": 192,
+				"h": 92
+			}
+		},
+		"modal_bet_box.png": {
+			"frame": {
+				"x": 1,
+				"y": 427,
+				"w": 528,
+				"h": 170
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 528,
+				"h": 170
+			},
+			"sourceSize": {
+				"w": 528,
+				"h": 170
+			}
+		},
+		"modal_minus.png": {
+			"frame": {
+				"x": 477,
+				"y": 78,
+				"w": 112,
+				"h": 81
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 112,
+				"h": 81
+			},
+			"sourceSize": {
+				"w": 112,
+				"h": 81
+			}
+		},
+		"modal_off.png": {
+			"frame": {
+				"x": 591,
+				"y": 78,
+				"w": 85,
+				"h": 47
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 85,
+				"h": 47
+			},
+			"sourceSize": {
+				"w": 85,
+				"h": 47
+			}
+		},
+		"modal_on.png": {
+			"frame": {
+				"x": 591,
+				"y": 127,
+				"w": 85,
+				"h": 47
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 85,
+				"h": 47
+			},
+			"sourceSize": {
+				"w": 85,
+				"h": 47
+			}
+		},
+		"modal_plus.png": {
+			"frame": {
+				"x": 547,
+				"y": 176,
+				"w": 112,
+				"h": 81
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 112,
+				"h": 81
+			},
+			"sourceSize": {
+				"w": 112,
+				"h": 81
+			}
+		},
+		"next.png": {
+			"frame": {
+				"x": 620,
+				"y": 1,
+				"w": 60,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 60,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 60,
+				"h": 72
+			}
+		},
+		"play_btn.png": {
+			"frame": {
+				"x": 682,
+				"y": 1,
+				"w": 253,
+				"h": 253
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 253,
+				"h": 253
+			},
+			"sourceSize": {
+				"w": 253,
+				"h": 253
+			}
+		},
+		"prev.png": {
+			"frame": {
+				"x": 661,
+				"y": 256,
+				"w": 59,
+				"h": 72
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 59,
+				"h": 72
+			},
+			"sourceSize": {
+				"w": 59,
+				"h": 72
+			}
+		},
+		"stop_btn.png": {
+			"frame": {
+				"x": 547,
+				"y": 330,
+				"w": 253,
+				"h": 253
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 253,
+				"h": 253
+			},
+			"sourceSize": {
+				"w": 253,
+				"h": 253
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "my_slot_controllers_new.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 936,
+			"h": 598
+		},
+		"scale": "1"
+	}
+}

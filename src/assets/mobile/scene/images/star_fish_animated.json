@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"star_fish_animated_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00001.png": {
+			"frame": {
+				"x": 181,
+				"y": 1,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00002.png": {
+			"frame": {
+				"x": 1,
+				"y": 80,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00003.png": {
+			"frame": {
+				"x": 181,
+				"y": 80,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00004.png": {
+			"frame": {
+				"x": 1,
+				"y": 159,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00005.png": {
+			"frame": {
+				"x": 181,
+				"y": 159,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00006.png": {
+			"frame": {
+				"x": 1,
+				"y": 238,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00007.png": {
+			"frame": {
+				"x": 181,
+				"y": 238,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00008.png": {
+			"frame": {
+				"x": 1,
+				"y": 317,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00009.png": {
+			"frame": {
+				"x": 181,
+				"y": 317,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00010.png": {
+			"frame": {
+				"x": 1,
+				"y": 396,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00011.png": {
+			"frame": {
+				"x": 181,
+				"y": 396,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00012.png": {
+			"frame": {
+				"x": 361,
+				"y": 1,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00013.png": {
+			"frame": {
+				"x": 361,
+				"y": 80,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00014.png": {
+			"frame": {
+				"x": 361,
+				"y": 159,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		},
+		"star_fish_animated_00015.png": {
+			"frame": {
+				"x": 361,
+				"y": 238,
+				"w": 178,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 178,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 178,
+				"h": 77
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "star_fish_animated.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 540,
+			"h": 474
+		},
+		"scale": "1"
+	}
+}

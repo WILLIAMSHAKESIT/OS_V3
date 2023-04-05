@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"stick _leaves_copy_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00001.png": {
+			"frame": {
+				"x": 155,
+				"y": 1,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00002.png": {
+			"frame": {
+				"x": 309,
+				"y": 1,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00003.png": {
+			"frame": {
+				"x": 463,
+				"y": 1,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00004.png": {
+			"frame": {
+				"x": 1,
+				"y": 201,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00005.png": {
+			"frame": {
+				"x": 155,
+				"y": 201,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00006.png": {
+			"frame": {
+				"x": 309,
+				"y": 201,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00007.png": {
+			"frame": {
+				"x": 463,
+				"y": 201,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00008.png": {
+			"frame": {
+				"x": 1,
+				"y": 401,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00009.png": {
+			"frame": {
+				"x": 155,
+				"y": 401,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00010.png": {
+			"frame": {
+				"x": 309,
+				"y": 401,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00011.png": {
+			"frame": {
+				"x": 463,
+				"y": 401,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00012.png": {
+			"frame": {
+				"x": 617,
+				"y": 1,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00013.png": {
+			"frame": {
+				"x": 617,
+				"y": 201,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00014.png": {
+			"frame": {
+				"x": 617,
+				"y": 401,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		},
+		"stick _leaves_copy_00015.png": {
+			"frame": {
+				"x": 1,
+				"y": 601,
+				"w": 152,
+				"h": 198
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 152,
+				"h": 198
+			},
+			"sourceSize": {
+				"w": 152,
+				"h": 198
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "leftstickleaves2.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 770,
+			"h": 800
+		},
+		"scale": "1"
+	}
+}

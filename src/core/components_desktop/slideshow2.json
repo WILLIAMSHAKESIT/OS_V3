@@ -1,0 +1,17 @@
+{
+    "SlideShow": [
+      {
+        "name" : "first_slide.png",
+        "alpha" : 1,
+        "radio" : "off",
+        "description" : "WIN UP TO 5,000 X BET"
+      },
+      {
+        "name" : "second_slide.png",
+        "alpha" : 0,
+        "radio" : "off",
+        "description" : "MEGA GIVE MORE CHANCE TO WIN BIG"
+      }
+    ]
+  }
+  
