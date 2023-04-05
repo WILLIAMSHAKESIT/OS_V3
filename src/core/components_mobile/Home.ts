@@ -45,6 +45,8 @@ export default class Loader {
         this.createBackground();
         window.addEventListener('resize',()=>{
             this.screenSize()
+
+           
         })
         this.screenSize();
     }
@@ -86,6 +88,8 @@ export default class Loader {
             this.rightcontainer.position.y = (this.screenSettings.baseHeight - this.leftcontainer.height) / 2;
             this.homelogo.position.y = 0;
             this.homeplaybtn.position.y = 800;
+            this.top_mountain.width = this.app.screen.width;
+            this.top_bg.width = this.app.screen.width;
         }else{
             //palm5
             this.palm5.position.x = 400;
@@ -117,10 +121,17 @@ export default class Loader {
             this.rightcontainer.position.y = (this.screenSettings.baseHeight - this.rightcontainer.width) / 2;
             this.homelogo.position.y = -600;
             this.homeplaybtn.position.y = 1100;
+            this.finalsurface.position.y = (this.screenSettings.baseHeight / 2) + 180;
         }
         this.top_bg.height = this.app.screen.height;
         this.finalsurface.height = 400
         this.homeplaybtn.position.x = (this.rightcontainer.width / 2);
+        this.finalsurface.width = this.screenSettings.baseWidth
+        this.top_mountain.width =2600;
+  
+       
+       console.log(this.app.screen.width)
+
     }
 
     private createBackground(){
