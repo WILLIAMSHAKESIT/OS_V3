@@ -269,8 +269,6 @@ export default class Controller {
         this.tapspacetext = new PIXI.Text("TAP SPACE TO SKIP ANIMATIONS", style);
         this.paylinetopcontainer.addChild(this.tapspacetext)
         this.payline_box.addChild(this.paylinetopcontainer);
-        this.paylinetopcontainer.position.x = 1000
-        this.paylinetopcontainer.position.y = 200;
 
         const style2 = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
@@ -281,8 +279,6 @@ export default class Controller {
         this.paylinetext = new PIXI.Text('SPIN TO WIN!', style2);
         this.paylinebottomcontainer.addChild(this.paylinetext);
         this.payline_box.addChild(this.paylinebottomcontainer);
-        this.paylinebottomcontainer.position.x = (this.payline_box.width - this.paylinebottomcontainer.width) / 2;
-        this.paylinebottomcontainer.position.y = ((this.payline_box.height - this.paylinebottomcontainer.height) / 2) + 20;
     }
 
     private updateBet(val: number){
