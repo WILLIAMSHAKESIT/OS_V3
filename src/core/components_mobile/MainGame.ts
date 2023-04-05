@@ -127,6 +127,8 @@ export default class MainGame {
             this.controller.play_container.y = (this.screenSettings.baseHeight - this.controller.play_container.height)/2
             this.controller.menu_button.y = (this.slotgame.container.height - this.controller.menu_button._height)
             this.controller.info_button.y = (this.slotgame.container.height - this.controller.info_button._height) - 10
+            this.controller.paylinetopcontainer.x = this.slotgame.container.x + this.slotgame.container.width
+            this.controller.paylinetopcontainer.y = (this.slotgame.container.y + this.slotgame.container.height) - 1000
             this.controller.paylinebottomcontainer.x = this.slotgame.container.x + this.slotgame.container.width
             this.controller.paylinebottomcontainer.y = (this.slotgame.container.y + this.slotgame.container.height) - 1000
             //check if is safe width
