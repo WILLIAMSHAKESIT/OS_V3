@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"Leaves_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00001.png": {
+			"frame": {
+				"x": 187,
+				"y": 1,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00002.png": {
+			"frame": {
+				"x": 1,
+				"y": 105,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00003.png": {
+			"frame": {
+				"x": 187,
+				"y": 105,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00004.png": {
+			"frame": {
+				"x": 1,
+				"y": 209,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00005.png": {
+			"frame": {
+				"x": 187,
+				"y": 209,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00006.png": {
+			"frame": {
+				"x": 1,
+				"y": 313,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00007.png": {
+			"frame": {
+				"x": 187,
+				"y": 313,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00008.png": {
+			"frame": {
+				"x": 1,
+				"y": 417,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00009.png": {
+			"frame": {
+				"x": 187,
+				"y": 417,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00010.png": {
+			"frame": {
+				"x": 373,
+				"y": 1,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00011.png": {
+			"frame": {
+				"x": 373,
+				"y": 105,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00012.png": {
+			"frame": {
+				"x": 373,
+				"y": 209,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00013.png": {
+			"frame": {
+				"x": 373,
+				"y": 313,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00014.png": {
+			"frame": {
+				"x": 373,
+				"y": 417,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		},
+		"Leaves_00015.png": {
+			"frame": {
+				"x": 1,
+				"y": 521,
+				"w": 184,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 184,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 184,
+				"h": 102
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "leaves_left.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 558,
+			"h": 624
+		},
+		"scale": "1"
+	}
+}

@@ -14,30 +14,48 @@ export default class MainGame {
     private app:PIXI.Application;
     public container: PIXI.Container;
     private fishcontainer: PIXI.Container;
-    //animates sprite
-    private bluecoral: PIXI.Sprite;
-    private lightrays: PIXI.AnimatedSprite;
-    private sandbg: PIXI.AnimatedSprite;
+    private leftcorals: PIXI.Container;
+    private rightcorals: PIXI.Container;
+    //sprites
+    private mountainbg: PIXI.Sprite;
+    private mainbackground: PIXI.Sprite;
+    private mountaintop: PIXI.Sprite;
+    private sandbg: PIXI.Sprite;
+    //animated sprites
+    private finalsurface: PIXI.AnimatedSprite;
+    private palm1: PIXI.AnimatedSprite;
+    private palm2: PIXI.AnimatedSprite;
+    private palm4: PIXI.AnimatedSprite;
+    private palm5: PIXI.AnimatedSprite;
+    private treasuregrass: PIXI.AnimatedSprite;
+    private grass1: PIXI.AnimatedSprite;
+    private grass2: PIXI.AnimatedSprite;
+    private homelogo: PIXI.AnimatedSprite;
+    private homeplaybtn: PIXI.AnimatedSprite;
+    private lightRays: PIXI.AnimatedSprite;
     private boat: PIXI.AnimatedSprite;
     private sandreflection: PIXI.AnimatedSprite;
-    private starfishanimated: PIXI.AnimatedSprite;
     private leftstickleaves1: PIXI.AnimatedSprite;
     private leftstickleaves2: PIXI.AnimatedSprite;
     private rightstickleaves1: PIXI.AnimatedSprite;
     private rightstickleaves2: PIXI.AnimatedSprite;
+    private bubblesleft: PIXI.AnimatedSprite;
+    private bubblesright: PIXI.AnimatedSprite;
+    private starfishanimated: PIXI.AnimatedSprite;
     private leftrock1: PIXI.Sprite;
     private leftrock2: PIXI.Sprite;
     private rightrock1: PIXI.Sprite;
     private rightrock2: PIXI.Sprite;
     private lefttube1: PIXI.Sprite;
     private righttube1: PIXI.Sprite;
-    private static_left_corals: PIXI.Sprite;
-    private static_right_corals: PIXI.Sprite;
     private leaves_left: PIXI.AnimatedSprite;
     private leaves_right: PIXI.AnimatedSprite;
-    private green_leaves_right1: PIXI.AnimatedSprite;
-    private bubblesleft: PIXI.AnimatedSprite;
-    private bubblesright: PIXI.AnimatedSprite;
+    private leftCoral:PIXI.AnimatedSprite;
+    private rightCoral:PIXI.AnimatedSprite;
+    private rightBlueLeaf:PIXI.AnimatedSprite;
+    private greenstick:PIXI.AnimatedSprite;
+    private greenstick2:PIXI.AnimatedSprite;
+    private greenstick3:PIXI.AnimatedSprite;
     //others
     private myAnimationsGSAP: any = [];
     private myAnimationsSprites: any = [];
@@ -91,10 +109,20 @@ export default class MainGame {
     private screenSize(){
         this.screenSettings = Functions.screenSize();
         if(this.screenSettings.screentype == "landscape"){
-            console.log('land')
-        }else{
-            console.log('por')
+            
         }
+        this.sandbg.height = Functions.scaleSizeFixedWidth(this.screenSettings.baseWidth, this.sandbg);
+        this.sandbg.width = this.screenSettings.baseWidth;
+        this.sandbg.position.y = this.screenSettings.baseHeight - this.sandbg.height;
+        this.sandreflection.height = Functions.scaleSizeFixedWidth(this.screenSettings.baseWidth, this.sandreflection);
+        this.sandreflection.width = this.screenSettings.baseWidth;
+        this.sandreflection.position.y = this.screenSettings.baseHeight - this.sandreflection.height;
+        this.starfishanimated.position.x = (this.screenSettings.baseWidth - this.starfishanimated.width) / 2;
+        // this.starfishanimated.position.y = (this.screenSettings.baseHeight) - starfishposy;
+        this.leftcorals.position.y = this.screenSettings.baseHeight - this.leftcorals.height;
+        this.leftcorals.position.x = 0;
+        this.rightcorals.position.y = this.screenSettings.baseHeight - this.rightcorals.height;
+        this.rightcorals.position.x = this.screenSettings.baseWidth - this.rightcorals.width;
     }
 
     private createNiceOne(win: number){
@@ -242,12 +270,12 @@ export default class MainGame {
         this.container.addChild(top_bg);
 
         //light rays
-        this.lightrays = Functions.loadSprite(this.app.loader, 'top_rays', '', true);
-        this.lightrays.width = this.app.screen.width;
-        this.lightrays.animationSpeed = .2;
-        this.lightrays.play();
-        this.myAnimationsSprites.push(this.lightrays);
-        this.container.addChild(this.lightrays);
+        this.lightRays = Functions.loadSprite(this.app.loader, 'top_rays', '', true);
+        this.lightRays.width = this.app.screen.width;
+        this.lightRays.animationSpeed = .2;
+        this.lightRays.play();
+        this.myAnimationsSprites.push(this.lightRays);
+        this.container.addChild(this.lightRays);
 
         //boat
         this.boat = Functions.loadSprite(this.app.loader, 'boat', '', true);
@@ -289,9 +317,106 @@ export default class MainGame {
         this.myAnimationsSprites.push(this.starfishanimated);
         this.container.addChild(this.starfishanimated);
 
-        //corals
-        this.createLeftCorals();
-        this.createRightCorals();
+        // //corals
+        // this.createLeftCorals();
+        // this.createRightCorals();
+        this.createCorals()
+    }
+    private createCorals(){
+        //left
+        //containers
+        this.leftcorals = new PIXI.Container();
+        this.leftCoral = Functions.loadSprite(this.app.loader, 'leftcoral', '', true);
+        //left leaves 
+        this.leaves_left = Functions.loadSprite(this.app.loader, 'leavesleft', '', true);
+        this.leaves_left.animationSpeed = .15;
+        this.leaves_left.x = this.leftCoral.width - 170
+        this.leaves_left.y = this.leftCoral.height - 180 
+        this.leaves_left.play()
+        this.leftcorals.addChild(this.leaves_left);
+        //green stick 3
+        this.greenstick3 = Functions.loadSprite(this.app.loader, 'greenstick', '', true);
+        this.greenstick3.animationSpeed = .15;
+        this.greenstick3.x = 0;
+        this.greenstick3.y = -30;
+        this.greenstick3.play()
+        this.leftcorals.addChild(this.greenstick3);
+        //main coral
+        this.leftCoral.animationSpeed = .15;
+        this.leftcorals.addChild(this.leftCoral);
+        //left stick leaves 1
+        this.leftstickleaves1 = Functions.loadSprite(this.app.loader, 'leftstickleaves2', '', true);
+        this.leftstickleaves1.animationSpeed = .15;
+        this.leftstickleaves1.position.y = this.leftCoral.height - (this.leftstickleaves1.height + 60);
+        this.leftstickleaves1.position.x = 100;
+        this.leftstickleaves1.play()
+        this.leftcorals.addChild(this.leftstickleaves1);
+        //left stick leaves 2
+        this.leftstickleaves2 = Functions.loadSprite(this.app.loader, 'leftstickleaves2', '', true);
+        this.leftstickleaves2.animationSpeed = .15;
+        this.leftstickleaves2.position.y =  this.leftCoral.height - (this.leftstickleaves2.height + 100);
+        this.leftstickleaves2.play()
+        this.leftcorals.addChild(this.leftstickleaves2);
+        //left rock 1
+        this.leftrock1 = Functions.loadSprite(this.app.loader, 'staticelements', 'left_rock_2nd.png', false);
+        this.leftrock1.position.y = this.leftCoral.height - this.leftrock1.height;
+        this.leftcorals.addChild(this.leftrock1)
+        //left tube 1
+        this.lefttube1 = Functions.loadSprite(this.app.loader, 'staticelements', 'left_tube_coral_1.png', false);
+        this.lefttube1.position.y = this.leftCoral.height - (this.lefttube1.height * 1.7);
+        this.leftcorals.addChild(this.lefttube1);
+        //left rock 2
+        this.leftrock2 = Functions.loadSprite(this.app.loader, 'staticelements', 'left_tube_coral_front.png', false);
+        this.leftrock2.position.y = this.leftCoral.height - this.leftrock2.height;
+        this.leftcorals.addChild(this.leftrock2)
+        //right
+        //containers
+        this.rightcorals = new PIXI.Container();
+        this.rightCoral = Functions.loadSprite(this.app.loader, 'rightcoral', '', true);
+        //main coral
+        this.rightCoral.animationSpeed = .15;
+        this.rightCoral.play()
+        this.rightcorals.addChild(this.rightCoral);
+        // right leaves 
+        this.leaves_right = Functions.loadSprite(this.app.loader, 'leavesright', '', true);
+        this.leaves_right.animationSpeed = .15;
+        // this.leaves_right.x = this.rightCoral.width - (this.leaves_right.width * 3);
+        this.leaves_right.play()
+        this.leaves_right.y = this.rightCoral.height - (this.leaves_right.height + 50);
+        this.rightcorals.addChild(this.leaves_right);
+        // right stick leaves 2
+        this.rightstickleaves2 = Functions.loadSprite(this.app.loader, 'rightstickleaves2', '', true);
+        this.rightstickleaves2.animationSpeed = .15;
+        this.rightstickleaves2.play()
+        this.rightstickleaves2.x = (this.rightCoral.width - (this.rightstickleaves2.width + 150))
+        this.rightstickleaves2.y = this.rightCoral.height - (this.rightstickleaves2.height + 100)
+        this.rightcorals.addChild(this.rightstickleaves2);
+        // right stick leaves 1
+        this.rightstickleaves1 = Functions.loadSprite(this.app.loader, 'rightstickleaves1', '', true);
+        this.rightstickleaves1.animationSpeed = .15;
+        this.rightstickleaves1.play()
+        this.rightstickleaves1.x = this.rightCoral.width - (this.rightstickleaves1.width)
+        this.rightstickleaves1.y = this.rightCoral.height - 230
+        this.rightcorals.addChild(this.rightstickleaves1);
+        //green stick
+        this.greenstick = Functions.loadSprite(this.app.loader, 'greenstick', '', true);
+        this.greenstick.animationSpeed = .15;
+        this.greenstick.play()
+        this.greenstick.x = (this.rightCoral.width - (this.greenstick.width+145));
+        this.greenstick.y = this.rightCoral.height - (this.greenstick.height + 80);
+        this.rightcorals.addChild(this.greenstick);
+        //right rock2
+        this.rightrock2 = Functions.loadSprite(this.app.loader, 'staticelements', 'right_rock_front.png', false);
+        this.rightrock2.position.x = (this.rightCoral.width - (this.rightrock2.width));
+        this.rightrock2.position.y = this.rightCoral.height - this.rightrock2.height;
+        this.rightcorals.addChild(this.rightrock2);
+        //starfish
+        this.starfishanimated = Functions.loadSprite(this.app.loader, 'star_fish_animated', '', true);
+        this.starfishanimated.animationSpeed = .15;
+        this.starfishanimated.play()
+        this.container.addChild(this.starfishanimated);
+        this.container.addChild(this.leftcorals);
+        this.container.addChild(this.rightcorals);
     }
 
     private quickPlay(){
@@ -552,126 +677,126 @@ export default class MainGame {
         }
     }
 
-    private createLeftCorals(){
-        //static corals
-        this.static_left_corals = Functions.loadSprite(this.app.loader, 'static_corals', 'Left_rock_corals.png', false);
-        this.static_left_corals.y = 20;
-        this.container.addChild(this.static_left_corals);
-        //leaves left
-        this.leaves_left = Functions.loadSprite(this.app.loader, 'leaves_left_animated', '', true);
-        this.leaves_left.animationSpeed = .15;
-        this.leaves_left.position.x = 280;
-        this.leaves_left.position.y = 730;
-        this.leaves_left.play();
-        this.myAnimationsSprites.push(this.leaves_left);
-        this.container.addChild(this.leaves_left);
-        //stick leaves 2
-        this.leftstickleaves2 = Functions.loadSprite(this.app.loader, 'leftstickleaves2', '', true);
-        this.leftstickleaves2.animationSpeed = .15;
-        this.leftstickleaves2.position.y = 530;
-        this.leftstickleaves2.position.x = 20;
-        this.leftstickleaves2.play();
-        this.myAnimationsSprites.push(this.leftstickleaves2);
-        this.container.addChild(this.leftstickleaves2);
-        //stick leaves 1
-        this.leftstickleaves1 = Functions.loadSprite(this.app.loader, 'leftstickleaves1', '', true);
-        this.leftstickleaves1.animationSpeed = .15;
-        this.leftstickleaves1.position.y = 630;
-        this.leftstickleaves1.position.x = 220;
-        this.leftstickleaves1.play();
-        this.myAnimationsSprites.push(this.leftstickleaves1);
-        this.container.addChild(this.leftstickleaves1);
-        //left rock2
-        this.leftrock2 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_rock_2nd.png', false);
-        this.leftrock2.position.y = 680;
-        this.container.addChild(this.leftrock2);
-        //left tube1
-        this.lefttube1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_tube_coral_1.png', false);
-        this.lefttube1.position.y = 730;
-        this.lefttube1.position.x = 20;
-        this.container.addChild(this.lefttube1);
-        //left rock1
-        this.leftrock1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_rock_front.png', false);
-        this.leftrock1.position.x = -30;
-        this.leftrock1.position.y = 870;
-        this.container.addChild(this.leftrock1);
-        //bubbles left
-        this.bubblesleft = Functions.loadSprite(this.app.loader, 'bubblesleft', '', true);
-        this.bubblesleft.animationSpeed = .1;
-        this.bubblesleft.position.y = 350;
-        this.bubblesleft.position.x = 20;
-        this.bubblesleft.play();
-        this.myAnimationsSprites.push(this.bubblesleft);
-        this.container.addChild(this.bubblesleft);
-    }
+    // private createLeftCorals(){
+    //     //static corals
+    //     this.static_left_corals = Functions.loadSprite(this.app.loader, 'static_corals', 'Left_rock_corals.png', false);
+    //     this.static_left_corals.y = 20;
+    //     this.container.addChild(this.static_left_corals);
+    //     //leaves left
+    //     this.leaves_left = Functions.loadSprite(this.app.loader, 'leaves_left_animated', '', true);
+    //     this.leaves_left.animationSpeed = .15;
+    //     this.leaves_left.position.x = 280;
+    //     this.leaves_left.position.y = 730;
+    //     this.leaves_left.play();
+    //     this.myAnimationsSprites.push(this.leaves_left);
+    //     this.container.addChild(this.leaves_left);
+    //     //stick leaves 2
+    //     this.leftstickleaves2 = Functions.loadSprite(this.app.loader, 'leftstickleaves2', '', true);
+    //     this.leftstickleaves2.animationSpeed = .15;
+    //     this.leftstickleaves2.position.y = 530;
+    //     this.leftstickleaves2.position.x = 20;
+    //     this.leftstickleaves2.play();
+    //     this.myAnimationsSprites.push(this.leftstickleaves2);
+    //     this.container.addChild(this.leftstickleaves2);
+    //     //stick leaves 1
+    //     this.leftstickleaves1 = Functions.loadSprite(this.app.loader, 'leftstickleaves1', '', true);
+    //     this.leftstickleaves1.animationSpeed = .15;
+    //     this.leftstickleaves1.position.y = 630;
+    //     this.leftstickleaves1.position.x = 220;
+    //     this.leftstickleaves1.play();
+    //     this.myAnimationsSprites.push(this.leftstickleaves1);
+    //     this.container.addChild(this.leftstickleaves1);
+    //     //left rock2
+    //     this.leftrock2 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_rock_2nd.png', false);
+    //     this.leftrock2.position.y = 680;
+    //     this.container.addChild(this.leftrock2);
+    //     //left tube1
+    //     this.lefttube1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_tube_coral_1.png', false);
+    //     this.lefttube1.position.y = 730;
+    //     this.lefttube1.position.x = 20;
+    //     this.container.addChild(this.lefttube1);
+    //     //left rock1
+    //     this.leftrock1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_rock_front.png', false);
+    //     this.leftrock1.position.x = -30;
+    //     this.leftrock1.position.y = 870;
+    //     this.container.addChild(this.leftrock1);
+    //     //bubbles left
+    //     this.bubblesleft = Functions.loadSprite(this.app.loader, 'bubblesleft', '', true);
+    //     this.bubblesleft.animationSpeed = .1;
+    //     this.bubblesleft.position.y = 350;
+    //     this.bubblesleft.position.x = 20;
+    //     this.bubblesleft.play();
+    //     this.myAnimationsSprites.push(this.bubblesleft);
+    //     this.container.addChild(this.bubblesleft);
+    // }
 
-    private createRightCorals(){
-        //stick leaves 2
-        this.rightstickleaves2 = Functions.loadSprite(this.app.loader, 'rightstickleaves2', '', true);
-        this.rightstickleaves2.animationSpeed = .15;
-        this.rightstickleaves2.position.y = 620;
-        this.rightstickleaves2.position.x = 1400;
-        this.rightstickleaves2.play();
-        this.myAnimationsSprites.push(this.rightstickleaves2);
-        this.container.addChild(this.rightstickleaves2);
-        //right rock1
-        this.rightrock1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_behind_rock.png', false);
-        this.rightrock1.position.y = 700;
-        this.rightrock1.position.x = 1400;
-        this.container.addChild(this.rightrock1);
-        //leaves right
-        this.leaves_right = Functions.loadSprite(this.app.loader, 'leaves_right_animated', '', true);
-        this.leaves_right.animationSpeed = .15;
-        this.leaves_right.position.x = 1450;
-        this.leaves_right.position.y = 690;
-        this.leaves_right.play();
-        this.myAnimationsSprites.push(this.leaves_right);
-        this.container.addChild(this.leaves_right);
-        //static corals
-        this.static_right_corals = Functions.loadSprite(this.app.loader, 'static_corals', 'right_rock_corals.png', false);
-        this.static_right_corals.y = 20;
-        this.static_right_corals.x = this.app.stage.width - this.static_right_corals.width;
-        this.container.addChild(this.static_right_corals);
-        //green leave right 1
-        this.green_leaves_right1 = Functions.loadSprite(this.app.loader, 'green_leaves_right', '', true);
-        this.green_leaves_right1.animationSpeed = .15;
-        this.green_leaves_right1.position.y = 770;
-        this.green_leaves_right1.position.x = 1550;
-        this.green_leaves_right1.play();
-        this.myAnimationsSprites.push(this.green_leaves_right1);
-        this.container.addChild(this.green_leaves_right1);
-        //right rock2
-        this.rightrock2 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_rock_front.png', false);
-        this.rightrock2.position.y = 810;
-        this.rightrock2.position.x = this.app.stage.width - this.rightrock2.width;
-        this.container.addChild(this.rightrock2);
-        //stick leaves 1
-        this.rightstickleaves1 = Functions.loadSprite(this.app.loader, 'rightstickleaves1', '', true);
-        this.rightstickleaves1.animationSpeed = .15;
-        this.rightstickleaves1.position.y = 400;
-        this.rightstickleaves1.position.x = 1670;
-        this.rightstickleaves1.play();
-        this.myAnimationsSprites.push(this.rightstickleaves1);
-        this.container.addChild(this.rightstickleaves1);
-        //right tube1
-        this.righttube1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_tube.png', false);
-        this.righttube1.position.y = 485;
-        this.righttube1.position.x = 1670;
-        this.container.addChild(this.righttube1);
-        //bubbles right
-        this.bubblesright = Functions.loadSprite(this.app.loader, 'bubblesleft', '', true);
-        this.bubblesright.animationSpeed = .1;
-        this.bubblesright.position.y = 100;
-        this.bubblesright.position.x = 1700;
-        this.bubblesright.play();
-        this.myAnimationsSprites.push(this.bubblesright);
-        this.container.addChild(this.bubblesright);
-        //blue coral
-        this.bluecoral = Functions.loadSprite(this.app.loader, 'static_corals', 'right_coral_2.png', false);
-        this.bluecoral.position.x = (this.app.screen.width - this.bluecoral.width);
-        this.bluecoral.position.y = 610;
-        this.container.addChild(this.bluecoral);
-    }
+    // private createRightCorals(){
+    //     //stick leaves 2
+    //     this.rightstickleaves2 = Functions.loadSprite(this.app.loader, 'rightstickleaves2', '', true);
+    //     this.rightstickleaves2.animationSpeed = .15;
+    //     this.rightstickleaves2.position.y = 620;
+    //     this.rightstickleaves2.position.x = 1400;
+    //     this.rightstickleaves2.play();
+    //     this.myAnimationsSprites.push(this.rightstickleaves2);
+    //     this.container.addChild(this.rightstickleaves2);
+    //     //right rock1
+    //     this.rightrock1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_behind_rock.png', false);
+    //     this.rightrock1.position.y = 700;
+    //     this.rightrock1.position.x = 1400;
+    //     this.container.addChild(this.rightrock1);
+    //     //leaves right
+    //     this.leaves_right = Functions.loadSprite(this.app.loader, 'leaves_right_animated', '', true);
+    //     this.leaves_right.animationSpeed = .15;
+    //     this.leaves_right.position.x = 1450;
+    //     this.leaves_right.position.y = 690;
+    //     this.leaves_right.play();
+    //     this.myAnimationsSprites.push(this.leaves_right);
+    //     this.container.addChild(this.leaves_right);
+    //     //static corals
+    //     this.static_right_corals = Functions.loadSprite(this.app.loader, 'static_corals', 'right_rock_corals.png', false);
+    //     this.static_right_corals.y = 20;
+    //     this.static_right_corals.x = this.app.stage.width - this.static_right_corals.width;
+    //     this.container.addChild(this.static_right_corals);
+    //     //green leave right 1
+    //     this.green_leaves_right1 = Functions.loadSprite(this.app.loader, 'green_leaves_right', '', true);
+    //     this.green_leaves_right1.animationSpeed = .15;
+    //     this.green_leaves_right1.position.y = 770;
+    //     this.green_leaves_right1.position.x = 1550;
+    //     this.green_leaves_right1.play();
+    //     this.myAnimationsSprites.push(this.green_leaves_right1);
+    //     this.container.addChild(this.green_leaves_right1);
+    //     //right rock2
+    //     this.rightrock2 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_rock_front.png', false);
+    //     this.rightrock2.position.y = 810;
+    //     this.rightrock2.position.x = this.app.stage.width - this.rightrock2.width;
+    //     this.container.addChild(this.rightrock2);
+    //     //stick leaves 1
+    //     this.rightstickleaves1 = Functions.loadSprite(this.app.loader, 'rightstickleaves1', '', true);
+    //     this.rightstickleaves1.animationSpeed = .15;
+    //     this.rightstickleaves1.position.y = 400;
+    //     this.rightstickleaves1.position.x = 1670;
+    //     this.rightstickleaves1.play();
+    //     this.myAnimationsSprites.push(this.rightstickleaves1);
+    //     this.container.addChild(this.rightstickleaves1);
+    //     //right tube1
+    //     this.righttube1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_tube.png', false);
+    //     this.righttube1.position.y = 485;
+    //     this.righttube1.position.x = 1670;
+    //     this.container.addChild(this.righttube1);
+    //     //bubbles right
+    //     this.bubblesright = Functions.loadSprite(this.app.loader, 'bubblesleft', '', true);
+    //     this.bubblesright.animationSpeed = .1;
+    //     this.bubblesright.position.y = 100;
+    //     this.bubblesright.position.x = 1700;
+    //     this.bubblesright.play();
+    //     this.myAnimationsSprites.push(this.bubblesright);
+    //     this.container.addChild(this.bubblesright);
+    //     //blue coral
+    //     this.bluecoral = Functions.loadSprite(this.app.loader, 'static_corals', 'right_coral_2.png', false);
+    //     this.bluecoral.position.x = (this.app.screen.width - this.bluecoral.width);
+    //     this.bluecoral.position.y = 610;
+    //     this.container.addChild(this.bluecoral);
+    // }
 
     public stopMyanimations(){
         this.myAnimationsGSAP.forEach((element: any) => {

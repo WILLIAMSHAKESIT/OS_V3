@@ -293,5 +293,15 @@ export default class Loader {
         this.loader.add('bonusblack', 'assets/mobile/bonus/spritesheets/bonusblack.json');
         //new
         this.loader.add('new_controllers', 'assets/mobile/slots/spritesheets/new_controllers.json');
+        //scene
+        this.loader.add('leftcoral', 'assets/mobile/scene_mobile/spritesheets/left_coral.json');
+        this.loader.add('staticelements', 'assets/mobile/scene_mobile/spritesheets/static_images.json');
+        this.loader.add('leavesleft', 'assets/mobile/scene_mobile/spritesheets/leaves_left.json');
+        this.loader.add('light_rays', 'assets/mobile/scene_mobile/spritesheets/light_rays.json');
+        // right scene
+        this.loader.add('rightcoral', 'assets/mobile/scene_mobile/spritesheets/right_coral.json');
+        this.loader.add('rightblueleaf', 'assets/mobile/scene_mobile/spritesheets/right_blue_leaf.json');
+        this.loader.add('leavesright', 'assets/mobile/scene_mobile/spritesheets/leaves_right.json');
+        this.loader.add('greenstick', 'assets/mobile/scene_mobile/spritesheets/green_stick.json');
     }
 }

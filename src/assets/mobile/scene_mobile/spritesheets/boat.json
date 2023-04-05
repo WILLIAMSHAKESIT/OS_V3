@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"boat_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00001.png": {
+			"frame": {
+				"x": 463,
+				"y": 1,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00002.png": {
+			"frame": {
+				"x": 925,
+				"y": 1,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00003.png": {
+			"frame": {
+				"x": 1387,
+				"y": 1,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00004.png": {
+			"frame": {
+				"x": 1,
+				"y": 469,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00005.png": {
+			"frame": {
+				"x": 463,
+				"y": 469,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00006.png": {
+			"frame": {
+				"x": 925,
+				"y": 469,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00007.png": {
+			"frame": {
+				"x": 1387,
+				"y": 469,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00008.png": {
+			"frame": {
+				"x": 1,
+				"y": 937,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00009.png": {
+			"frame": {
+				"x": 463,
+				"y": 937,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00010.png": {
+			"frame": {
+				"x": 925,
+				"y": 937,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00011.png": {
+			"frame": {
+				"x": 1387,
+				"y": 937,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00012.png": {
+			"frame": {
+				"x": 1849,
+				"y": 1,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00013.png": {
+			"frame": {
+				"x": 1849,
+				"y": 469,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00014.png": {
+			"frame": {
+				"x": 1849,
+				"y": 937,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		},
+		"boat_00015.png": {
+			"frame": {
+				"x": 1,
+				"y": 1405,
+				"w": 460,
+				"h": 466
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 460,
+				"h": 466
+			},
+			"sourceSize": {
+				"w": 460,
+				"h": 466
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "boat.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 2310,
+			"h": 1872
+		},
+		"scale": "1"
+	}
+}

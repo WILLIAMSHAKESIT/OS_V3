@@ -1,0 +1,335 @@
+{
+	"frames": {
+		"left_rock_corals_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00001.png": {
+			"frame": {
+				"x": 311,
+				"y": 1,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00002.png": {
+			"frame": {
+				"x": 621,
+				"y": 1,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00003.png": {
+			"frame": {
+				"x": 931,
+				"y": 1,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00004.png": {
+			"frame": {
+				"x": 1241,
+				"y": 1,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00005.png": {
+			"frame": {
+				"x": 1,
+				"y": 560,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00006.png": {
+			"frame": {
+				"x": 311,
+				"y": 560,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00007.png": {
+			"frame": {
+				"x": 621,
+				"y": 560,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00008.png": {
+			"frame": {
+				"x": 931,
+				"y": 560,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00009.png": {
+			"frame": {
+				"x": 1241,
+				"y": 560,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00010.png": {
+			"frame": {
+				"x": 1551,
+				"y": 1,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00011.png": {
+			"frame": {
+				"x": 1551,
+				"y": 560,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00012.png": {
+			"frame": {
+				"x": 1,
+				"y": 1119,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00013.png": {
+			"frame": {
+				"x": 311,
+				"y": 1119,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00014.png": {
+			"frame": {
+				"x": 621,
+				"y": 1119,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		},
+		"left_rock_corals_00015.png": {
+			"frame": {
+				"x": 931,
+				"y": 1119,
+				"w": 308,
+				"h": 557
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 308,
+				"h": 557
+			},
+			"sourceSize": {
+				"w": 308,
+				"h": 557
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "left_coral.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1860,
+			"h": 1677
+		},
+		"scale": "1"
+	}
+}

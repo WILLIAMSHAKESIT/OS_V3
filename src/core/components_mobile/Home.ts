@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import json from './slideshow2.json';
 
 export default class Loader {
+    private screenSettings: any;
     private app:PIXI.Application;
     public container: PIXI.Container;
     private cloudscontainer: PIXI.Container;
@@ -27,6 +28,8 @@ export default class Loader {
     public lastindex:number =  0;
     public slidetimer: number = 0;
     public playanimation: any;
+    private top_bg:PIXI.Sprite
+    private top_mountain:PIXI.Sprite
 
     constructor(app: PIXI.Application) {
         this.app = app;
@@ -40,29 +43,107 @@ export default class Loader {
 
     private init(){
         this.createBackground();
+        window.addEventListener('resize',()=>{
+            this.screenSize()
+        })
+        this.screenSize();
+    }
+
+    private screenSize(){
+        this.screenSettings = Functions.screenSize();
+        let baseposy = (this.screenSettings.game.height - this.screenSettings.game.safeHeight);
+        let baseposx = (this.screenSettings.game.width - this.screenSettings.game.safeWidth);
+        this.homelogo.scale.set(1.5)
+        this.leftcontainer.scale.set(1.3)
+        if(this.screenSettings.screentype == "landscape"){
+            //palm5
+            this.palm5.position.x = 400;
+            this.palm5.position.y = 900;
+            //palm4
+            this.palm4.position.x = 50;
+            this.palm4.position.y = this.palm5.position.y;
+            // //palm1
+            this.palm1.position.x = 800;
+            this.palm1.position.y = 800;
+            // //palm2
+            this.palm2.position.x = 600;
+            this.palm2.position.y = 850;
+            // //treasuregrass
+            this.treasuregrass.position.x = this.palm1.x + 280;
+            this.treasuregrass.position.y = 1150;
+            // //grass1
+            this.grass1.position.x = 800;
+            this.grass1.position.y = 1180;
+            // //grass2
+            this.grass2.position.x = 250;
+            this.grass2.position.y = 1000;
+            //left side
+            this.leftcontainer.position.x = (this.screenSettings.baseWidth / 4)  - (this.leftcontainer.width / 2) + (baseposx / 2);
+            this.leftcontainer.position.y = (this.screenSettings.baseHeight - this.leftcontainer.height) / 2;
+
+            //right side
+            this.rightcontainer.position.x = (this.screenSettings.baseWidth / 2) + ((this.screenSettings.baseWidth / 4) - (this.rightcontainer.width / 2));
+            this.rightcontainer.position.y = (this.screenSettings.baseHeight - this.leftcontainer.height) / 2;
+            this.homelogo.position.y = 0;
+            this.homeplaybtn.position.y = 800;
+        }else{
+            //palm5
+            this.palm5.position.x = 400;
+            this.palm5.position.y = 1300;
+            //palm4
+            this.palm4.position.x = 20;
+            this.palm4.position.y = 1000;
+            // //palm1
+            this.palm1.position.x = 700;
+            this.palm1.position.y = 800;
+            // //palm2
+            this.palm2.position.x = this.palm4.position.x + 50;
+            this.palm2.position.y = this.palm4.position.y - 20;
+            // //treasuregrass
+            this.treasuregrass.position.x = this.palm1.x + 280;
+            this.treasuregrass.position.y = this.palm1.y + 380;
+            // //grass2
+            this.grass2.position.x = 400;
+            this.grass2.position.y = 1200;
+            // //grass1
+            this.grass1.position.x = 450;
+            this.grass1.position.y = 1300;
+            //left side
+            this.leftcontainer.position.x = (this.screenSettings.baseWidth - this.leftcontainer.width) / 2;
+            this.leftcontainer.position.y = (this.screenSettings.baseHeight - this.leftcontainer.height) / 2;
+
+            //right side
+            this.rightcontainer.position.x = (this.screenSettings.baseWidth - this.rightcontainer.width) / 2;
+            this.rightcontainer.position.y = (this.screenSettings.baseHeight - this.rightcontainer.width) / 2;
+            this.homelogo.position.y = -600;
+            this.homeplaybtn.position.y = 1100;
+        }
+        this.top_bg.height = this.app.screen.height;
+        this.finalsurface.height = 400
+        this.homeplaybtn.position.x = (this.rightcontainer.width / 2);
     }
 
     private createBackground(){
         //background
-        const top_bg = Functions.loadSprite(this.app.loader, 'top_assets', 'top_bg.png', false);
-        top_bg.width = this.app.screen.width;
-        top_bg.height = this.app.screen.height;
-        this.container.addChild(top_bg);
+        this.top_bg = Functions.loadSprite(this.app.loader, 'top_assets', 'top_bg.png', false);
+        this.top_bg.width = this.app.screen.width;
+        this.container.addChild(this.top_bg);
 
         //clouds
         this.createClouds();
         this.container.addChild(this.cloudscontainer);
 
         //mountain
-        const top_mountain = Functions.loadSprite(this.app.loader, 'top_assets', 'top_mountain.png', false);
-        top_mountain.width = this.app.screen.width;
-        top_mountain.height = this.app.screen.height;
-        this.container.addChild(top_mountain);
+        this.top_mountain = Functions.loadSprite(this.app.loader, 'top_assets', 'top_mountain.png', false);
+        this.top_mountain.width = this.app.screen.width;
+        this.top_mountain.height = 1600;
+        
+        this.container.addChild(this.top_mountain);
 
         //final surface
         this.finalsurface = Functions.loadSprite(this.app.loader, 'finalsurface', '', true);
         this.finalsurface.width = this.app.screen.width;
-        this.finalsurface.position.y = this.app.screen.height - (this.finalsurface.height / 2);
+        this.finalsurface.position.y = this.app.screen.height - (this.finalsurface.height / 2) - 40;
         this.finalsurface.animationSpeed = .18;
         this.finalsurface.play();
         this.container.addChild(this.finalsurface);
@@ -117,64 +198,41 @@ export default class Loader {
         });
 
     }
-
     private createPlants(){
-        this.palm1 = Functions.loadSprite(this.app.loader, 'palm1', '', true);
-        this.palm2 = Functions.loadSprite(this.app.loader, 'palm2', '', true);
-        this.palm5 = Functions.loadSprite(this.app.loader, 'palm5', '', true);
-        this.palm4 = Functions.loadSprite(this.app.loader, 'palm4', '', true);
-        this.treasuregrass = Functions.loadSprite(this.app.loader, 'treasuregrass', '', true);
-        this.grass1 = Functions.loadSprite(this.app.loader, 'grass1', '', true);
-        this.grass2 = Functions.loadSprite(this.app.loader, 'grass2', '', true);
-        
-        //palm1
-        this.palm1.position.x = 550;
-        this.palm1.position.y = 350;
-        this.palm1.animationSpeed = .18;
-        this.palm1.play();
-        this.myAnimationsSprites.push(this.palm1);
-        this.plantscontainer.addChild(this.palm1);
-        //palm2
-        this.palm2.position.x = 150;
-        this.palm2.position.y = 480;
-        this.palm2.animationSpeed = .18;
-        this.palm2.play();
-        this.myAnimationsSprites.push(this.palm2);
-        this.plantscontainer.addChild(this.palm2);
-        //palm4
-        this.palm4.position.x = 380;
-        this.palm4.position.y = 550;
-        this.palm4.animationSpeed = .18;
-        this.palm4.play();
-        this.myAnimationsSprites.push(this.palm4);
-        this.plantscontainer.addChild(this.palm4);
         //palm5
-        this.palm5.position.x = 550;
-        this.palm5.position.y = 530;
+        this.palm5 =  Functions.loadSprite(this.app.loader, 'palm5', '', true);
         this.palm5.animationSpeed = .18;
         this.palm5.play();
-        this.myAnimationsSprites.push(this.palm5);
         this.plantscontainer.addChild(this.palm5);
+        //palm4
+        this.palm4 =  Functions.loadSprite(this.app.loader, 'palm4', '', true);
+        this.palm4.animationSpeed = .18;
+        this.palm4.play();
+        this.plantscontainer.addChild(this.palm4);
+        //palm1
+        this.palm1 =  Functions.loadSprite(this.app.loader, 'palm1', '', true);
+        this.palm1.animationSpeed = .18;
+        this.palm1.play();
+        this.plantscontainer.addChild(this.palm1);
+        //palm2
+        this.palm2 =  Functions.loadSprite(this.app.loader, 'palm2', '', true);
+        this.palm2.animationSpeed = .18;
+        this.palm2.play();
+        this.plantscontainer.addChild(this.palm2);
         //treasuregrass
-        this.treasuregrass.position.x = 850;
-        this.treasuregrass.position.y = 680;
+        this.treasuregrass =  Functions.loadSprite(this.app.loader, 'treasuregrass', '', true);
         this.treasuregrass.animationSpeed = .12;
         this.treasuregrass.play();
-        this.myAnimationsSprites.push(this.treasuregrass);
         this.plantscontainer.addChild(this.treasuregrass);
         //grass1
-        this.grass1.position.x = 550;
-        this.grass1.position.y = 730;
+        this.grass1 =  Functions.loadSprite(this.app.loader, 'grass1', '', true);
         this.grass1.animationSpeed = .18;
         this.grass1.play();
-        this.myAnimationsSprites.push(this.grass1);
         this.plantscontainer.addChild(this.grass1);
         //grass2
-        this.grass2.position.x = 50;
-        this.grass2.position.y = 740;
+        this.grass2 =  Functions.loadSprite(this.app.loader, 'grass2', '', true);
         this.grass2.animationSpeed = .18;
         this.grass2.play();
-        this.myAnimationsSprites.push(this.grass2);
         this.plantscontainer.addChild(this.grass2);
     }
 
@@ -200,9 +258,9 @@ export default class Loader {
         this.homeplaybtn.animationSpeed = .18;
         this.homeplaybtn.anchor.set(.5);
         this.homeplaybtn.play();
+        this.homeplaybtn.scale.set(1.5)
         this.homeplaybtn.interactive = true;
         this.homeplaybtn.buttonMode = true;
-        this.homeplaybtn.position.x = (this.rightcontainer.width / 2);
         this.homeplaybtn.position.y = this.homelogo.position.y + this.homelogo.height + (this.homeplaybtn.height / 1);
         this.rightcontainer.addChild(this.homeplaybtn);
         this.playanimation = gsap.to(this.homeplaybtn, {
