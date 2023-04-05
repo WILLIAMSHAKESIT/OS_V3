@@ -52,43 +52,21 @@ export default class Controller {
     }
 
     private init() {
-        // this.createParent();
-        // this.createMenuModal();
-        // this.createModalInfo();
-        // this.createModalAutoplay();
+        this.createParent();
+        this.createMenuModal();
+        this.createModalInfo();
+        this.createModalAutoplay();
         this.createInfoButton();
-        // this.createSoundButton();
+        this.createSoundButton();
         this.createMenuButton();
-        // this.createPlayButton();
-        // this.createBetBalanceBox();
-        // this.createPaylineBox();
-        //positioning
-        //parent
-        // this.controller_parent.position.x = (this.container.width - this.controller_parent.width) / 2;
-        //info button
-        // this.info_button.position.x = this.marginside;
-        // this.info_button.position.y = this.gaps;
-        // //sound button
-        // this.sound_button.position.x = this.marginside;
-        // this.sound_button.position.y = (this.container.height - this.sound_button.height) - this.gaps;
-        // //menu button
-        // this.menu_button.position.x = this.sound_button.position.x + this.sound_button.width + this.gaps;
-        // this.menu_button.position.y = (this.container.height - this.menu_button.height) / 2;
-        // //bet box
-        // this.bet_box.position.x = this.menu_button.position.x + this.menu_button.width + this.gaps;
-        // //balance box
-        // this.balance_box.position.x = this.bet_box.position.x;
-        // this.balance_box.position.y = (this.bet_box.position.y + this.bet_box.height) * .81;
-        // //payline box
-        // this.payline_box.position.x = this.balance_box.position.x + this.balance_box.width + this.gaps;
-        // //main container
-        // this.container.position.x = (this.app.screen.width - this.container.width) / 2;
-        // this.container.position.y = (this.app.screen.height - this.container.height);
-        this.info_button.x = 1000
+        this.createPlayButton();
+        this.createBetBalanceBox();
+        this.createPaylineBox();
     }
 
     private createParent(){
         this.controller_parent = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'controller_parent.png', false);
+        this.controller_parent.alpha = 0
         this.controller_parent.width = this.app.screen.width;
         this.container.addChild(this.controller_parent);
     }
@@ -185,13 +163,13 @@ export default class Controller {
 
     private createPlayButton(){
         //single play
-        this.singleplay_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'play_button.png', false);
+        this.singleplay_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'play_btn.png', false);
         this.singleplay_button.interactive = true;
         this.singleplay_button.buttonMode = true;
         this.mybuttons.push(this.singleplay_button);
         this.play_container.addChild(this.singleplay_button);
         //auto play
-        this.autoplay_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'autoplay_button.png', false);
+        this.autoplay_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'autoplay_btn.png', false);
         this.autoplay_button.interactive = true;
         this.autoplay_button.buttonMode = true;
         this.mybuttons.push(this.autoplay_button);
@@ -210,7 +188,7 @@ export default class Controller {
         //position
         this.singleplay_button.position.x = (this.play_container.width - this.singleplay_button.width) / 2;
         this.autoplay_button.position.x = (this.play_container.width - this.autoplay_button.width) / 2;
-        this.autoplay_button.position.y = this.singleplay_button.height - 50;
+        this.autoplay_button.position.y = this.singleplay_button.height + 30;
         //text autoplay
         const style = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
@@ -218,10 +196,10 @@ export default class Controller {
             fontWeight: 'bold',
             fill: '#ffffff',
         });
-        this.playtext = new PIXI.Text("AUTO PLAY", style);
-        this.autoplay_button.addChild(this.playtext);
-        this.playtext.position.x = (this.autoplay_button.width - this.playtext.width) / 2;
-        this.playtext.position.y = ((this.autoplay_button.height - this.playtext.height) / 2) - 12;
+        // this.playtext = new PIXI.Text("AUTO PLAY", style);
+        // this.autoplay_button.addChild(this.playtext);
+        // this.playtext.position.x = (this.autoplay_button.width - this.playtext.width) / 2;
+        // this.playtext.position.y = ((this.autoplay_button.height - this.playtext.height) / 2) - 12;
 
     }
 
@@ -291,8 +269,8 @@ export default class Controller {
         this.tapspacetext = new PIXI.Text("TAP SPACE TO SKIP ANIMATIONS", style);
         this.paylinetopcontainer.addChild(this.tapspacetext)
         this.payline_box.addChild(this.paylinetopcontainer);
-        this.paylinetopcontainer.position.x = (this.payline_box.width - this.paylinetopcontainer.width) / 2;
-        this.paylinetopcontainer.position.y = 20;
+        this.paylinetopcontainer.position.x = 1000
+        this.paylinetopcontainer.position.y = 200;
 
         const style2 = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
