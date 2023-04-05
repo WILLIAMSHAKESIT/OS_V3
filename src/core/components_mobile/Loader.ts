@@ -108,7 +108,7 @@ export default class Loader {
             //loading bar
             this.loadingBar.height = this.loadingFrameHeight;
             this.loadingBar.x = this.loadingFrame.x;
-            this.loadingBar.y = this.loadingFrame.y;
+            this.loadingBar.y = this.loadingFrame.y +10 ;
 
             //loading text
             this.loadingText.x = (this.screenSettings.baseWidth / 2);
