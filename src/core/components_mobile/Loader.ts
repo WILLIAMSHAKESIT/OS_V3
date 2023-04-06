@@ -69,14 +69,20 @@ export default class Loader {
         this.screenSize();
         this.loadAssets();
         this.loader.onProgress.add(() => {
-            if(this.loadingBar.width < this.loadingFrameWidth)
-                this.loadingBar.width += 5;
+            if(this.loadingBar.width < this.loadingFrameWidth){
+            this.loadingBar.width += 5;
+        }      
         });
+        let setTime = setTimeout(() => {
+                
+     
         this.loader.load(() => {
             this.loadingBar.width = this.loadingFrameWidth;
             this.app.stage.removeChild(this.loadingBar,this.loadingFrame,this.loadingBorder, this.loadingText);
             this.soundPrompt()
         });
+        clearTimeout(setTime);
+    }, 1000);
     }
     private screenSize(){
         let setputa = setTimeout(() => {
