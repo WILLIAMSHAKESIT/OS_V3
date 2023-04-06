@@ -23,7 +23,7 @@ export default class Controller {
     //variable
     public marginside: number = 100;
     private gaps: number = 10;
-    private betvalue: PIXI.Text;
+    public betvalue: PIXI.Text;
     public bet: number;
     public balance: number = 100000;
     public balancevalue: PIXI.Text;
@@ -196,61 +196,28 @@ export default class Controller {
             fontWeight: 'bold',
             fill: '#ffffff',
         });
-        // this.playtext = new PIXI.Text("AUTO PLAY", style);
-        // this.autoplay_button.addChild(this.playtext);
-        // this.playtext.position.x = (this.autoplay_button.width - this.playtext.width) / 2;
-        // this.playtext.position.y = ((this.autoplay_button.height - this.playtext.height) / 2) - 12;
 
     }
 
     private createBetBalanceBox(){
-        this.bet_box = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'bet_box.png', false);
-        this.container.addChild(this.bet_box);
-        this.balance_box = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'balance_box.png', false);
-        this.container.addChild(this.balance_box);
-
         const style = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
-            fontSize: 60,
-            fontWeight: 'bold',
-            fill: '#12d8dc',
-        });
-        const style2 = new PIXI.TextStyle({
-            fontFamily: 'Luckiest Guy',
-            fontSize: 60,
+            fontSize: 80,
             fontWeight: 'bold',
             fill: '#ffffff',
         });
-        const style3 = new PIXI.TextStyle({
+        const style2 = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
-            fontSize: 45,
-            fontWeight: 'bold',
-            fill: '#12d8dc',
-        });
-        const style4 = new PIXI.TextStyle({
-            fontFamily: 'Luckiest Guy',
-            fontSize: 45,
+            fontSize: 80,
             fontWeight: 'bold',
             fill: '#ffffff',
         });
         //bet
-        const text = new PIXI.Text("BET", style);
-        this.bet_box.addChild(text)
-        text.position.y = (this.bet_box.height - text.height) / 2.8;
-        text.position.x = 25;
-        this.betvalue = new PIXI.Text(Functions.formatNumber(this.bet), style2);
-        this.bet_box.addChild(this.betvalue)
-        this.betvalue.position.x = this.bet_box.width - this.betvalue.width - 25;
-        this.betvalue.position.y = (this.bet_box.height - this.betvalue.height) / 2.8;
+        this.betvalue = new PIXI.Text(Functions.formatNumber(this.bet), style);
+        this.container.addChild(this.betvalue);
         //balance
-        const text2 = new PIXI.Text("CREDIT", style3);
-        this.balance_box.addChild(text2);
-        text2.position.y = (this.balance_box.height - text2.height) / 2.8;
-        text2.position.x = 15;
-        this.balancevalue = new PIXI.Text(Functions.formatNumber(this.balance), style4);
-        this.balance_box.addChild(this.balancevalue);
-        this.balancevalue.position.x = this.balance_box.width - this.balancevalue.width - 15;
-        this.balancevalue.position.y = (this.balance_box.height - this.balancevalue.height) / 2.8;
+        this.balancevalue = new PIXI.Text(Functions.formatNumber(this.balance), style2);
+        this.container.addChild(this.balancevalue);
     }
 
     private createPaylineBox(){

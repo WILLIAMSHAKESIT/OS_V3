@@ -136,8 +136,10 @@ export default class MainGame {
                 this.controller.menu_button.y = (this.slotgame.container.height - (this.controller.menu_button.height/1.5))
             }
             if(this.screenSettings.isSafe == 'B'){
-                this.slotgame.container.y = (this.screenSettings.baseHeight - this.slotgame.container.height)
+                this.slotgame.container.y = (this.screenSettings.newGameY + this.screenSettings.baseHeight)- this.slotgame.container.height
                 this.controller.play_container.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.play_container.width*1.2)
+                this.controller.menu_button.y = (this.slotgame.container.y + this.slotgame.container.height) - (this.controller.menu_button.height*1.4)
+                this.controller.info_button.y = (this.slotgame.container.y + this.slotgame.container.height) - (this.controller.info_button.height*1.3)
             }
             if(this.screenSettings.isSafe == 'C'){
                 this.slotgame.container.y = (this.screenSettings.baseHeight - this.slotgame.container.height)
@@ -147,10 +149,15 @@ export default class MainGame {
                 this.slotgame.container.y = (this.screenSettings.baseHeight - this.slotgame.container.height)
                 this.controller.play_container.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.play_container.width*1.5)
             }
-            this.controller.paylinetopcontainer.x = this.slotgame.container.x + this.slotgame.container.width
-            this.controller.paylinetopcontainer.y = (this.slotgame.container.y + this.slotgame.container.height)
-            this.controller.paylinebottomcontainer.x = this.slotgame.container.x + this.slotgame.container.width
-            this.controller.paylinebottomcontainer.y = (this.slotgame.container.y + this.slotgame.container.height)
+            this.controller.paylinetopcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinetopcontainer.width)/2
+            this.controller.paylinetopcontainer.y = ((this.slotgame.container.y + this.slotgame.container.height) -( this.controller.paylinetopcontainer.height*1.4))  
+            this.controller.paylinebottomcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinebottomcontainer.width)/2
+            this.controller.paylinebottomcontainer.y = (this.controller.paylinetopcontainer.y - (this.controller.paylinebottomcontainer.height*1.2))
+            this.controller.balancevalue.x = ((this.slotgame.container.x + this.slotgame.container.width)) - (this.controller.balancevalue.width*2.5)
+            console.log(this.controller.paylinebottomcontainer.x)
+            this.controller.balancevalue.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.betvalue.height*1.3))  
+            this.controller.betvalue.x = (768 + (352-(this.controller.betvalue.width/2)))/2
+            this.controller.betvalue.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.betvalue.height*1.3))  
         }
         this.sandbg.height = Functions.scaleSizeFixedWidth(this.screenSettings.baseWidth, this.sandbg);
         this.sandbg.width = this.screenSettings.baseWidth;
@@ -261,16 +268,16 @@ export default class MainGame {
         this.controller.paylinebottomcontainer.removeChildren();
         this.controller.paylinetext.text = text;
         this.controller.paylinebottomcontainer.addChild(this.controller.paylinetext);
-        this.controller.paylinebottomcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinebottomcontainer.width) / 2;
-        this.controller.paylinebottomcontainer.position.y = ((this.controller.payline_box.height - this.controller.paylinebottomcontainer.height) / 2) + 20;
+        this.controller.paylinebottomcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinebottomcontainer.width)/2
+        this.controller.paylinebottomcontainer.y = (this.controller.paylinetopcontainer.y - (this.controller.paylinebottomcontainer.height*1.2))
     }
 
     private updateTopPayline(text: any){
         this.controller.paylinetopcontainer.removeChildren();
         this.controller.tapspacetext.text = text;
         this.controller.paylinetopcontainer.addChild(this.controller.tapspacetext);
-        this.controller.paylinetopcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinetopcontainer.width) / 2;
-        this.controller.paylinetopcontainer.position.y = 20;
+        this.controller.paylinetopcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinetopcontainer.width)/2
+        this.controller.paylinetopcontainer.y = ((this.slotgame.container.y + this.slotgame.container.height) -( this.controller.paylinetopcontainer.height*1.4))  
     }
 
     private updateBottomPayline2(paylines_symbols: any, paylines_pay: any, pattern: any){
@@ -297,8 +304,8 @@ export default class MainGame {
         newtext.y = (this.controller.paylinetopcontainer.height - newtext.height) / 2;
         newtext.x = newcontainer.x + newcontainer.width + 5;
         
-        this.controller.paylinetopcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinetopcontainer.width) / 2;
-        this.controller.paylinetopcontainer.position.y = 20;
+        // this.controller.paylinetopcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinetopcontainer.width) / 2;
+        // this.controller.paylinetopcontainer.position.y = 20;
 
     }
 
@@ -774,8 +781,8 @@ export default class MainGame {
         this.playcount--;
         this.controller.balance = newbal;
         this.controller.balancevalue.text = Functions.formatNumber(newbal);
-        this.controller.balancevalue.position.x = this.controller.balance_box.width - this.controller.balancevalue.width - 15;
-        this.controller.balancevalue.position.y = (this.controller.balance_box.height - this.controller.balancevalue.height) / 2.8;
+        // this.controller.balancevalue.position.x = this.controller.balance_box.width - this.controller.balancevalue.width - 15;
+        // this.controller.balancevalue.position.y = (this.controller.balance_box.height - this.controller.balancevalue.height) / 2.8;
         if(bet > newbal){
             this.stopAutoPlay();
         }
