@@ -74,8 +74,6 @@ export default class ModalInfo {
         //modal close
         this.modal_close.position.x = (this.modal_container.width - this.modal_close.width) - 5;
         this.modal_close.position.y = 5;
-        //main container
-        this.container.position.x = (this.app.screen.width - this.container.width) / 2;
     }
 
     private createNextPrevBtn(){

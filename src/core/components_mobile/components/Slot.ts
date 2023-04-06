@@ -17,19 +17,19 @@ export default class Slot {
     public reelsmaskcontainer: Array<any> = [];
     //slot variables
     private reelRandom: Array<Array<number>> = [
-        [1,10,2,3,1,11,4,3,10,2,4,8,1,2,11,5,9,1,5,10,2,6,8,6,10,3,9,7,1,7],
-        [5,2,4,1,4,5,10,6,11,1,6,8,3,9,2,1,10,4,3,1,11,7,8,2,11,1,3,2,10,7],
-        [1,5,10,11,4,1,2,5,2,2,8,1,6,10,4,3,9,2,11,6,7,1,7,3,2,3,1,8,3,5],
-        [1,5,2,3,1,4,11,3,2,5,9,4,2,1,8,4,1,8,10,3,8,1,8,11,7,6,2,10,7,6],
-        [1,5,5,10,6,2,4,1,3,8,6,1,11,4,3,2,7,10,9,2,7,3,9,1,8,2,10,1,8,8]
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7]
+        // [1,10,2,3,1,11,4,3,10,2,4,8,1,2,11,5,9,1,5,10,2,6,8,6,10,3,9,7,1,7],
+        // [5,2,4,1,4,5,10,6,11,1,6,8,3,9,2,1,10,4,3,1,11,7,8,2,11,1,3,2,10,7],
+        // [1,5,10,11,4,1,2,5,2,2,8,1,6,10,4,3,9,2,11,6,7,1,7,3,2,3,1,8,3,5],
+        // [1,5,2,3,1,4,11,3,2,5,9,4,2,1,8,4,1,8,10,3,8,1,8,11,7,6,2,10,7,6],
+        // [1,5,5,10,6,2,4,1,3,8,6,1,11,4,3,2,7,10,9,2,7,3,9,1,8,2,10,1,8,8]
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7]
     ];
     private rtp: number = 0;
-    private charAssets: Array<any>;
+    public charAssets: Array<any>;
     private symbols: Array<any> = [];
     private topposy: number;
     public startreel: Boolean = true;
@@ -72,18 +72,20 @@ export default class Slot {
     updatebalancewin: (win: number) => void;
     setbuttonstrue: () => void;
     bonusgame: (arr1: any, arr2: any) => void;
-    private paylinebool: Boolean = false;
+    congratspopup: () => void;
+    public paylinebool: Boolean = false;
     public isbonus: Boolean = false;
     private isbonusArr: Array<number> = [];
     public reeleffectlinecontainer: Array<PIXI.Container> = [];
     public reeleffectbgcontainer: Array<PIXI.Container> = [];
-    private readonly lineposx: Array<number> = [780,1085,1380];
+    private readonly lineposx: Array<number> = [770,1085,1380];
     private readonly linewidth: Array<number> = [370,370,370];
     private lineheight: number = 0
     public lineeffect: Array<PIXI.AnimatedSprite> = [];
     public bgeffect: Array<PIXI.AnimatedSprite> = [];
+    public isbonusgame: Boolean = false;
 
-    constructor(app: PIXI.Application, updatebottonpayline: (text: any) => void, updatebottonpayline2: (param1: any, param2: any,param3: any) => void, changebutton: () => void, updatetoppayline: (text: any) => void, autospintext: () => void, updatebalance: () => void, setbuttonstrue: () => void, updatebalancewin: (win: number) => void, bonusgame: (arr1: any, arr2: any) => void) {
+    constructor(app: PIXI.Application, updatebottonpayline: (text: any) => void, updatebottonpayline2: (param1: any, param2: any,param3: any) => void, changebutton: () => void, updatetoppayline: (text: any) => void, autospintext: () => void, updatebalance: () => void, setbuttonstrue: () => void, updatebalancewin: (win: number) => void, bonusgame: (arr1: any, arr2: any) => void,congratspopup: () => void) {
         this.app = app;
         this.app.stage.sortableChildren = true;
         this.container = new PIXI.Container();
@@ -112,6 +114,7 @@ export default class Slot {
         this.setbuttonstrue = setbuttonstrue;
         this.updatebalancewin = updatebalancewin;
         this.bonusgame = bonusgame;
+        this.congratspopup = congratspopup;
         this.init();
     }
 
@@ -144,6 +147,63 @@ export default class Slot {
             this.reelscontainer.push(container);
             this.symbols.push(arr);
         }
+    }
+    public createBlocksBonusGame(new_arr: any){
+        this.symbols = [];
+        this.reelscontainer.forEach((element, index) => {
+            let reelvalue = new_arr[index];
+            let posy = 0;
+            let arr: Array<any> = [];
+            for(let i = 0; i < reelvalue.length; i++){
+                let index:number = reelvalue[i];
+                let type = this.charAssets[index - 1].type;
+                let texture = this.charAssets[index - 1].value;
+                const symbol = Functions.loadSprite(this.app.loader, texture, '', true);
+                const h = symbol.height;
+                const w = symbol.width;
+                symbol.height = this.blockfixedsize;
+                symbol.width = (w / h) * this.blockfixedsize;
+                symbol.position.y = posy;
+                element.addChild(symbol);
+                posy -= symbol.height;
+                let data = {
+                    type : type,
+                    value : symbol
+                }
+                arr.push(data);
+            }
+
+            this.symbols.push(arr);
+        });
+    }
+
+    public createBlocksFreeSpin(){
+        this.symbols = [];
+        this.reelscontainer.forEach((element, index) => {
+            let reelvalue = this.reelRandom[index];
+            let posy = 0;
+            let arr: Array<any> = [];
+            for(let i = 0; i < reelvalue.length; i++){
+                let index:number = reelvalue[Math.floor(Math.random()*reelvalue.length)];
+                let type = this.charAssets[index - 1].type;
+                let texture = this.charAssets[index - 1].value;
+                const symbol = Functions.loadSprite(this.app.loader, texture, '', true);
+                const h = symbol.height;
+                const w = symbol.width;
+                symbol.height = this.blockfixedsize;
+                symbol.width = (w / h) * this.blockfixedsize;
+                symbol.position.y = posy;
+                element.addChild(symbol);
+                posy -= symbol.height;
+                let data = {
+                    type : type,
+                    value : symbol
+                }
+                arr.push(data);
+            }
+
+            this.symbols.push(arr);
+        });
     }
 
     private createBlocks(number: number){
@@ -184,7 +244,7 @@ export default class Slot {
             const container = new PIXI.Container();
             element.position.y = this.maskposy[index];
             element.position.x = this.maskposx[index];
-            element.height = element.height - 10 
+            element.height = element.height + 17
             container.addChild(element)
             this.slotcontainer.addChild(container);
             this.reelsmaskcontainer.push(container)
@@ -267,15 +327,17 @@ export default class Slot {
                 onComplete: () => {
                     this.startreelbool[duration] = false;
                     let speed = this.spinSpeed;
-                    let repeatret = this.checkBonus(duration);
                     let repeat = 0;
-                    if(repeatret > 0){
-                        repeat = 2;
-                        this.isbonus = true;
-                        this.isbonusArr.push(repeatret);
-                    }
-                    if(this.interval == 5){
-                        repeat = 0;
+                    if(!this.isbonusgame){
+                        let repeatret = this.checkBonus(duration);
+                        if(repeatret > 0){
+                            repeat = 2;
+                            this.isbonus = true;
+                            this.isbonusArr.push(repeatret);
+                        }
+                        if(this.interval == 5){
+                            repeat = 0;
+                        }
                     }
                     this.spinReel(container, speed, duration, repeat);
                     bounce.kill();
@@ -990,10 +1052,21 @@ export default class Slot {
     }
 
     public playAgain(new_char: any = []){
+        if(this.isbonus){
+            let settime = setTimeout(() => {
+                this.setbuttonstrue();
+                clearTimeout(settime)
+            },6000);
+        }
+        else{
+            this.setbuttonstrue();
+        }
+        if(this.isbonusgame){
+            this.congratspopup();
+        }
         this.isbonus = false;
         this.isbonusArr = [];
         this.changebutton();
-        this.setbuttonstrue();
         if(!this.paylinebool){
             this.updatebottonpayline('SPIN TO WIN!');
             this.autospintext();

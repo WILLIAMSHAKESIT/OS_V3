@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import json from './slideshow2.json';
 
 export default class Loader {
+    private screenSettings: any;
     private app:PIXI.Application;
     public container: PIXI.Container;
     private bonuscontainer: PIXI.Container;
@@ -51,9 +52,11 @@ export default class Loader {
     private protection: number = 0;
     private bubblesSprites: Array<PIXI.Sprite> = [];
     private gamecontainer: PIXI.Container;
-    private bonusgamedone: () => void;
+    private bonusgamedone: (offer: number) => void;
+    private top_bg:PIXI.Sprite
+    private top_mountain:PIXI.Sprite
 
-    constructor(app: PIXI.Application,arr1: any, arr2: any, container: PIXI.Container, bonusgamedone: () => void) {
+    constructor(app: PIXI.Application,arr1: any, arr2: any, container: PIXI.Container, bonusgamedone: (offer: number) => void) {
         this.app = app;
         this.container = new PIXI.Container();
         this.bonuscontainer = new PIXI.Container();
@@ -96,29 +99,87 @@ export default class Loader {
     private init(){
         this.createBackground();
         this.createBonus();
+        window.addEventListener('resize',()=>{
+            this.screenSize()
+        })
+        this.screenSize();
+    }
+
+    private screenSize(){
+        this.screenSettings = Functions.screenSize();
+        let baseposy = (this.screenSettings.game.height - this.screenSettings.game.safeHeight);
+        let baseposx = (this.screenSettings.game.width - this.screenSettings.game.safeWidth);
+        if(this.screenSettings.screentype == "landscape"){
+            //palm5
+            this.palm5.position.x = 400;
+            this.palm5.position.y = 900;
+            //palm4
+            this.palm4.position.x = 50;
+            this.palm4.position.y = this.palm5.position.y;
+            // //palm1
+            this.palm1.position.x = 800;
+            this.palm1.position.y = 800;
+            // //palm2
+            this.palm2.position.x = 600;
+            this.palm2.position.y = 850;
+            // //treasuregrass
+            this.treasuregrass.position.x = this.palm1.x + 280;
+            this.treasuregrass.position.y = 1150;
+            // //grass1
+            this.grass1.position.x = 800;
+            this.grass1.position.y = 1180;
+            // //grass2
+            this.grass2.position.x = 250;
+            this.grass2.position.y = 1000;
+        }else{
+            //palm5
+            this.palm5.position.x = 400;
+            this.palm5.position.y = 1300;
+            //palm4
+            this.palm4.position.x = 20;
+            this.palm4.position.y = 1000;
+            // //palm1
+            this.palm1.position.x = 700;
+            this.palm1.position.y = 800;
+            // //palm2
+            this.palm2.position.x = this.palm4.position.x + 50;
+            this.palm2.position.y = this.palm4.position.y - 20;
+            // //treasuregrass
+            this.treasuregrass.position.x = this.palm1.x + 280;
+            this.treasuregrass.position.y = this.palm1.y + 380;
+            // //grass2
+            this.grass2.position.x = 400;
+            this.grass2.position.y = 1200;
+            // //grass1
+            this.grass1.position.x = 450;
+            this.grass1.position.y = 1300;
+        }
+        this.top_bg.height = this.app.screen.height;
+        this.finalsurface.height = 400
+        this.top_bg.width = this.app.screen.width;
+        this.top_mountain.width = this.app.screen.width;
     }
 
     private createBackground(){
         //background
-        const top_bg = Functions.loadSprite(this.app.loader, 'top_assets', 'top_bg.png', false);
-        top_bg.width = this.app.screen.width;
-        top_bg.height = this.app.screen.height;
-        this.container.addChild(top_bg);
+        this.top_bg = Functions.loadSprite(this.app.loader, 'top_assets', 'top_bg.png', false);
+        this.top_bg.width = this.app.screen.width;
+        this.container.addChild(this.top_bg);
 
         //clouds
         this.createClouds();
         this.container.addChild(this.cloudscontainer);
 
         //mountain
-        const top_mountain = Functions.loadSprite(this.app.loader, 'top_assets', 'top_mountain.png', false);
-        top_mountain.width = this.app.screen.width;
-        top_mountain.height = this.app.screen.height;
-        this.container.addChild(top_mountain);
+        this.top_mountain = Functions.loadSprite(this.app.loader, 'top_assets', 'top_mountain.png', false);
+        this.top_mountain.height = 1600;
+        
+        this.container.addChild(this.top_mountain);
 
         //final surface
         this.finalsurface = Functions.loadSprite(this.app.loader, 'finalsurface', '', true);
         this.finalsurface.width = this.app.screen.width;
-        this.finalsurface.position.y = this.app.screen.height - (this.finalsurface.height / 2);
+        this.finalsurface.position.y = this.app.screen.height - (this.finalsurface.height / 2) - 40;
         this.finalsurface.animationSpeed = .18;
         this.finalsurface.play();
         this.container.addChild(this.finalsurface);
@@ -127,7 +188,6 @@ export default class Loader {
         //plants
         this.createPlants();
         this.container.addChild(this.plantscontainer);
-
     }
 
     private createClouds(){
@@ -171,64 +231,41 @@ export default class Loader {
         });
 
     }
-
     private createPlants(){
-        this.palm1 = Functions.loadSprite(this.app.loader, 'palm1', '', true);
-        this.palm2 = Functions.loadSprite(this.app.loader, 'palm2', '', true);
-        this.palm5 = Functions.loadSprite(this.app.loader, 'palm5', '', true);
-        this.palm4 = Functions.loadSprite(this.app.loader, 'palm4', '', true);
-        this.treasuregrass = Functions.loadSprite(this.app.loader, 'treasuregrass', '', true);
-        this.grass1 = Functions.loadSprite(this.app.loader, 'grass1', '', true);
-        this.grass2 = Functions.loadSprite(this.app.loader, 'grass2', '', true);
-        
-        //palm1
-        this.palm1.position.x = 550;
-        this.palm1.position.y = 350;
-        this.palm1.animationSpeed = .18;
-        this.palm1.play();
-        this.myAnimationsSprites.push(this.palm1);
-        this.plantscontainer.addChild(this.palm1);
-        //palm2
-        this.palm2.position.x = 150;
-        this.palm2.position.y = 480;
-        this.palm2.animationSpeed = .18;
-        this.palm2.play();
-        this.myAnimationsSprites.push(this.palm2);
-        this.plantscontainer.addChild(this.palm2);
-        //palm4
-        this.palm4.position.x = 380;
-        this.palm4.position.y = 550;
-        this.palm4.animationSpeed = .18;
-        this.palm4.play();
-        this.myAnimationsSprites.push(this.palm4);
-        this.plantscontainer.addChild(this.palm4);
         //palm5
-        this.palm5.position.x = 550;
-        this.palm5.position.y = 530;
+        this.palm5 =  Functions.loadSprite(this.app.loader, 'palm5', '', true);
         this.palm5.animationSpeed = .18;
         this.palm5.play();
-        this.myAnimationsSprites.push(this.palm5);
         this.plantscontainer.addChild(this.palm5);
+        //palm4
+        this.palm4 =  Functions.loadSprite(this.app.loader, 'palm4', '', true);
+        this.palm4.animationSpeed = .18;
+        this.palm4.play();
+        this.plantscontainer.addChild(this.palm4);
+        //palm1
+        this.palm1 =  Functions.loadSprite(this.app.loader, 'palm1', '', true);
+        this.palm1.animationSpeed = .18;
+        this.palm1.play();
+        this.plantscontainer.addChild(this.palm1);
+        //palm2
+        this.palm2 =  Functions.loadSprite(this.app.loader, 'palm2', '', true);
+        this.palm2.animationSpeed = .18;
+        this.palm2.play();
+        this.plantscontainer.addChild(this.palm2);
         //treasuregrass
-        this.treasuregrass.position.x = 850;
-        this.treasuregrass.position.y = 680;
+        this.treasuregrass =  Functions.loadSprite(this.app.loader, 'treasuregrass', '', true);
         this.treasuregrass.animationSpeed = .12;
         this.treasuregrass.play();
-        this.myAnimationsSprites.push(this.treasuregrass);
         this.plantscontainer.addChild(this.treasuregrass);
         //grass1
-        this.grass1.position.x = 550;
-        this.grass1.position.y = 730;
+        this.grass1 =  Functions.loadSprite(this.app.loader, 'grass1', '', true);
         this.grass1.animationSpeed = .18;
         this.grass1.play();
-        this.myAnimationsSprites.push(this.grass1);
         this.plantscontainer.addChild(this.grass1);
         //grass2
-        this.grass2.position.x = 50;
-        this.grass2.position.y = 740;
+        this.grass2 =  Functions.loadSprite(this.app.loader, 'grass2', '', true);
         this.grass2.animationSpeed = .18;
         this.grass2.play();
-        this.myAnimationsSprites.push(this.grass2);
         this.plantscontainer.addChild(this.grass2);
     }
 
@@ -241,7 +278,13 @@ export default class Loader {
         this.homelogo.x = (this.bonuscontainer.width - this.homelogo.width) / 2;
         bonusframe.y = this.homelogo.y + (this.homelogo.height / 2);
         this.container.addChild(this.bonuscontainer);
+        let settime = setTimeout(() => {
+            this.createClams();
+            clearTimeout(settime);
+        }, 1500);
+    }
 
+    private createClams(){
         const clamContainer = new PIXI.Container();
         //header
         let style = new PIXI.TextStyle({
@@ -286,6 +329,8 @@ export default class Loader {
         this.btnAccept.position.x = (this.bonusOffer.position.x - this.btnAccept.width) - 20;
         this.btnAccept.position.y = this.bonusOffer.position.y + 15;
         this.btnAccept.addListener("pointerdown", () => {
+            this.btnAccept.interactive = false;
+            this.btnReject.interactive = false;
             let countdown = 3;
             for(let i = 0; i <= 3; i++){
                 let animatecountdown = setInterval(() => {
@@ -335,9 +380,7 @@ export default class Loader {
                                 element.addChild(this.clamSprite[index]);
                             });
                             this.clickCount = 3;
-                            this.clamSprite.forEach(element => {
-                                element.interactive = true;
-                            });
+                            
                             this.updateHeaderText();
                             this.updateOfferText('0.00');
                             this.createBubbles();
@@ -518,7 +561,7 @@ export default class Loader {
     }
 
     private animateBubbles(){
-        let duration = 7;
+        let duration = 4;
         this.bubbles.forEach((element, index) => {
             let interval = duration * index;
             let show = setTimeout(() => {
@@ -542,15 +585,16 @@ export default class Loader {
                     let delay = .005 * index;
                     let gsapper = gsap.to(element, {
                         delay: delay,
+                        ease: "sine.in",
                         duration: .05,
                         alpha: 0,
                         onStart: () => {
                             if(index == 0){
                                 let transition2 = gsap.to(this.gamecontainer, {
                                     alpha: 1,
+                                    ease: "sine.out",
                                     duration: 1.5,
                                     onComplete: () => {
-                                        this.bonusgamedone();
                                         transition2.kill();
                                     }
                                 });
@@ -561,6 +605,10 @@ export default class Loader {
                             if(index == this.bubblesSprites.length - 1){
                                 this.bubbles = [];
                                 this.bubblesSprites = [];
+                                this.clamSprite.forEach(element => {
+                                    element.interactive = true;
+                                });
+                                this.bonusgamedone(this.offer);
                             }
                             gsapper.kill();
                         }

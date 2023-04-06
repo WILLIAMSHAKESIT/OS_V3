@@ -1,8 +1,128 @@
 {
 	"frames": {
-		"next.png": {
+		"check_free_spin.png": {
 			"frame": {
 				"x": 1,
+				"y": 1,
+				"w": 107,
+				"h": 98
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 107,
+				"h": 98
+			},
+			"sourceSize": {
+				"w": 107,
+				"h": 98
+			}
+		},
+		"ex_free_spin.png": {
+			"frame": {
+				"x": 110,
+				"y": 1,
+				"w": 118,
+				"h": 101
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 118,
+				"h": 101
+			},
+			"sourceSize": {
+				"w": 118,
+				"h": 101
+			}
+		},
+		"free_spin_popup.png": {
+			"frame": {
+				"x": 230,
+				"y": 1,
+				"w": 762,
+				"h": 721
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 762,
+				"h": 721
+			},
+			"sourceSize": {
+				"w": 762,
+				"h": 721
+			}
+		},
+		"get_free_spins.png": {
+			"frame": {
+				"x": 994,
+				"y": 1,
+				"w": 248,
+				"h": 358
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 248,
+				"h": 358
+			},
+			"sourceSize": {
+				"w": 248,
+				"h": 358
+			}
+		},
+		"money_wilds.png": {
+			"frame": {
+				"x": 1,
+				"y": 724,
+				"w": 365,
+				"h": 448
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 365,
+				"h": 448
+			},
+			"sourceSize": {
+				"w": 365,
+				"h": 448
+			}
+		},
+		"multiplier_wilds.png": {
+			"frame": {
+				"x": 368,
+				"y": 724,
+				"w": 365,
+				"h": 448
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 365,
+				"h": 448
+			},
+			"sourceSize": {
+				"w": 365,
+				"h": 448
+			}
+		},
+		"next.png": {
+			"frame": {
+				"x": 1244,
 				"y": 1,
 				"w": 60,
 				"h": 72
@@ -20,10 +140,50 @@
 				"h": 72
 			}
 		},
-		"patterns.png": {
+		"p1.png": {
 			"frame": {
 				"x": 1,
-				"y": 75,
+				"y": 361,
+				"w": 197,
+				"h": 206
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 197,
+				"h": 206
+			},
+			"sourceSize": {
+				"w": 197,
+				"h": 206
+			}
+		},
+		"p2.png": {
+			"frame": {
+				"x": 994,
+				"y": 361,
+				"w": 156,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 156,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 156,
+				"h": 160
+			}
+		},
+		"patterns.png": {
+			"frame": {
+				"x": 1306,
+				"y": 1,
 				"w": 939,
 				"h": 621
 			},
@@ -42,8 +202,8 @@
 		},
 		"prev.png": {
 			"frame": {
-				"x": 63,
-				"y": 1,
+				"x": 1,
+				"y": 624,
 				"w": 59,
 				"h": 72
 			},
@@ -59,6 +219,106 @@
 				"w": 59,
 				"h": 72
 			}
+		},
+		"v1.png": {
+			"frame": {
+				"x": 994,
+				"y": 624,
+				"w": 197,
+				"h": 206
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 197,
+				"h": 206
+			},
+			"sourceSize": {
+				"w": 197,
+				"h": 206
+			}
+		},
+		"v2.png": {
+			"frame": {
+				"x": 1193,
+				"y": 624,
+				"w": 200,
+				"h": 110
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 110
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 110
+			}
+		},
+		"y1.png": {
+			"frame": {
+				"x": 1395,
+				"y": 624,
+				"w": 159,
+				"h": 172
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 159,
+				"h": 172
+			},
+			"sourceSize": {
+				"w": 159,
+				"h": 172
+			}
+		},
+		"y2.png": {
+			"frame": {
+				"x": 1556,
+				"y": 624,
+				"w": 134,
+				"h": 192
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 134,
+				"h": 192
+			},
+			"sourceSize": {
+				"w": 134,
+				"h": 192
+			}
+		},
+		"y3.png": {
+			"frame": {
+				"x": 1692,
+				"y": 624,
+				"w": 197,
+				"h": 206
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 197,
+				"h": 206
+			},
+			"sourceSize": {
+				"w": 197,
+				"h": 206
+			}
 		}
 	},
 	"meta": {
@@ -67,8 +327,8 @@
 		"image": "new_controllers.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 941,
-			"h": 697
+			"w": 2246,
+			"h": 1173
 		},
 		"scale": "1"
 	}

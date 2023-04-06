@@ -20,12 +20,13 @@ export default class ModalMenu {
     private betArray: Array<number> = [1,5,10,20,50,100];
     private betIndex: number = 0;
     private updatebet: (val: number) => void;
+    private bonusprizeupdate: (val : number) => void;
     private ambienttoggleon: PIXI.Sprite;
     private ambienttoggleoff: PIXI.Sprite;
     private ambientbtn: PIXI.Sprite;
     private soundfxbtn: PIXI.Sprite;
 
-    constructor(app: PIXI.Application, updatebet: (val: number) => void) {
+    constructor(app: PIXI.Application, updatebet: (val: number) => void,bonusprizeupdate: (val : number) => void) {
         this.app = app;
         this.container = new PIXI.Container();
         this.betvaluestyle = new PIXI.TextStyle({
@@ -48,6 +49,7 @@ export default class ModalMenu {
         });
         this.bet_value = this.betArray[this.betIndex];
         this.updatebet = updatebet;
+        this.bonusprizeupdate = bonusprizeupdate;
         this.ambienttoggleon = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'toggle_on.png', false);
         this.ambienttoggleoff = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'toggle_off.png', false);
         this.init();
@@ -230,5 +232,6 @@ export default class ModalMenu {
         this.bettextvalue.text = this.bet_value;
         this.bettextvalue.x = (this.bet_box.width - this.bettextvalue.width) / 2;
         this.updatebet(this.bet_value);
+        this.bonusprizeupdate(this.bet_value);
     }
 }

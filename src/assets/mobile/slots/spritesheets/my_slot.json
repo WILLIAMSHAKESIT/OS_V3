@@ -4,7 +4,7 @@
 			"frame": {
 				"x": 1,
 				"y": 1,
-				"w": 1920,
+				"w": 1896,
 				"h": 1080
 			},
 			"rotated": false,
@@ -12,112 +12,132 @@
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 1920,
+				"w": 1896,
 				"h": 1080
 			},
 			"sourceSize": {
-				"w": 1920,
+				"w": 1896,
 				"h": 1080
+			}
+		},
+		"info_btn.png": {
+			"frame": {
+				"x": 1,
+				"y": 1083,
+				"w": 119,
+				"h": 130
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 119,
+				"h": 130
+			},
+			"sourceSize": {
+				"w": 119,
+				"h": 130
 			}
 		},
 		"mask_1.png": {
 			"frame": {
-				"x": 1923,
+				"x": 1899,
 				"y": 1,
-				"w": 292,
-				"h": 752
+				"w": 272,
+				"h": 727
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 292,
-				"h": 752
+				"w": 272,
+				"h": 727
 			},
 			"sourceSize": {
-				"w": 292,
-				"h": 752
+				"w": 272,
+				"h": 727
 			}
 		},
 		"mask_2.png": {
 			"frame": {
-				"x": 1923,
-				"y": 755,
-				"w": 292,
-				"h": 752
+				"x": 1899,
+				"y": 730,
+				"w": 258,
+				"h": 727
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 292,
-				"h": 752
+				"w": 258,
+				"h": 727
 			},
 			"sourceSize": {
-				"w": 292,
-				"h": 752
+				"w": 258,
+				"h": 727
 			}
 		},
 		"mask_3.png": {
 			"frame": {
 				"x": 1,
-				"y": 1509,
-				"w": 292,
-				"h": 752
+				"y": 1459,
+				"w": 258,
+				"h": 727
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 292,
-				"h": 752
+				"w": 258,
+				"h": 727
 			},
 			"sourceSize": {
-				"w": 292,
-				"h": 752
+				"w": 258,
+				"h": 727
 			}
 		},
 		"mask_4.png": {
 			"frame": {
-				"x": 295,
-				"y": 1509,
-				"w": 292,
-				"h": 752
+				"x": 261,
+				"y": 1459,
+				"w": 258,
+				"h": 727
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 292,
-				"h": 752
+				"w": 258,
+				"h": 727
 			},
 			"sourceSize": {
-				"w": 292,
-				"h": 752
+				"w": 258,
+				"h": 727
 			}
 		},
 		"mask_5.png": {
 			"frame": {
-				"x": 589,
-				"y": 1509,
-				"w": 292,
-				"h": 752
+				"x": 521,
+				"y": 1459,
+				"w": 272,
+				"h": 727
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 292,
-				"h": 752
+				"w": 272,
+				"h": 727
 			},
 			"sourceSize": {
-				"w": 292,
-				"h": 752
+				"w": 272,
+				"h": 727
 			}
 		}
 	},
@@ -127,8 +147,8 @@
 		"image": "my_slot.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 2216,
-			"h": 2262
+			"w": 2172,
+			"h": 2187
 		},
 		"scale": "1"
 	}

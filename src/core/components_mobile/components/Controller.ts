@@ -20,6 +20,8 @@ export default class Controller {
     public playtext: PIXI.Text;
     public tapspacetext: PIXI.Text;
     public paylinetext: PIXI.Text;
+    public betContainer:PIXI.Sprite 
+    public creditContainer:PIXI.Sprite 
     //variable
     public marginside: number = 100;
     private gaps: number = 10;
@@ -37,10 +39,11 @@ export default class Controller {
     public modalautoplay: ModalAutoplay;
     private openmodal: (bool: Boolean) => void;
     private autoplay: (number: number) => void;
+    private bonusprizeupdate: (val : number) => void;
     public paylinetopcontainer: PIXI.Container;
     public paylinebottomcontainer: PIXI.Container;
 
-    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, autoplay: (number: number) => void) {
+    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, autoplay: (number: number) => void,bonusprizeupdate: (val : number) => void) {
         this.container = new PIXI.Container();
         this.paylinebottomcontainer = new PIXI.Container;
         this.paylinetopcontainer = new PIXI.Container;
@@ -48,6 +51,7 @@ export default class Controller {
         this.app = app;
         this.openmodal = openmodal;
         this.autoplay = autoplay;
+        this.bonusprizeupdate = bonusprizeupdate;
         this.init();
     }
 
@@ -57,7 +61,6 @@ export default class Controller {
         this.createModalInfo();
         this.createModalAutoplay();
         this.createInfoButton();
-        this.createSoundButton();
         this.createMenuButton();
         this.createPlayButton();
         this.createBetBalanceBox();
@@ -90,14 +93,6 @@ export default class Controller {
         });
     }
 
-    private createSoundButton(){
-        this.sound_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'sound_on.png', false);
-        this.sound_button.interactive = true;
-        this.sound_button.buttonMode = true;
-        this.mybuttons.push(this.sound_button);
-        this.container.addChild(this.sound_button);
-    }
-
     private createMenuButton(){
         this.menu_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'menu_btn.png', false);
         this.menu_button.interactive = true;
@@ -118,7 +113,7 @@ export default class Controller {
     }
 
     private createMenuModal(){
-        this.modalmenu = new ModalMenu(this.app, this.updateBet.bind(this));
+        this.modalmenu = new ModalMenu(this.app, this.updateBet.bind(this),this.bonusprizeupdate.bind(this));
         this.bet = this.modalmenu.bet_value;
         this.modalmenu.modal_close.addListener("pointerdown", () => {
             this.showmenu = false;
@@ -200,24 +195,31 @@ export default class Controller {
     }
 
     private createBetBalanceBox(){
+        this.betContainer =  Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'bet_container.png', false);
+        this.container.addChild(this.betContainer);
+        this.creditContainer =  Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'credit_container.png', false);
+        this.container.addChild(this.creditContainer);
         const style = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
-            fontSize: 80,
+            fontSize: 60,
             fontWeight: 'bold',
             fill: '#ffffff',
         });
         const style2 = new PIXI.TextStyle({
             fontFamily: 'Luckiest Guy',
-            fontSize: 80,
+            fontSize: 50,
             fontWeight: 'bold',
             fill: '#ffffff',
         });
         //bet
         this.betvalue = new PIXI.Text(Functions.formatNumber(this.bet), style);
-        this.container.addChild(this.betvalue);
+        this.betvalue.x = (this.betContainer.width - this.betvalue.width)/2
+        this.betContainer.addChild(this.betvalue)
         //balance
         this.balancevalue = new PIXI.Text(Functions.formatNumber(this.balance), style2);
-        this.container.addChild(this.balancevalue);
+        this.balancevalue.x = (this.creditContainer.width - this.balancevalue.width)/2
+        this.balancevalue.y = (this.creditContainer.height - this.balancevalue.height)/2
+        this.creditContainer.addChild(this.balancevalue)
     }
 
     private createPaylineBox(){
@@ -250,9 +252,7 @@ export default class Controller {
 
     private updateBet(val: number){
         this.betvalue.text = Functions.formatNumber(val);
-        this.betvalue.position.x = this.bet_box.width - this.betvalue.width - 25;
+        this.betvalue.x = (this.betContainer.width - this.betvalue.width)/2
         this.bet = val;
     }
-
-
 }

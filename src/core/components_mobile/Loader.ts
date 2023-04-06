@@ -70,7 +70,7 @@ export default class Loader {
         this.loadAssets();
         this.loader.onProgress.add(() => {
             if(this.loadingBar.width < this.loadingFrameWidth)
-                this.loadingBar.width += 5;
+                this.loadingBar.width += .5;
         });
         this.loader.load(() => {
             this.loadingBar.width = this.loadingFrameWidth;
@@ -239,20 +239,34 @@ export default class Loader {
         this.loader.add('homeplaybtn', 'assets/mobile/home/spritesheets/homeplaybtn.json');
         //scene
         this.loader.add('spritesgamescene', 'assets/mobile/scene/spritesheets/spritesgamescene.json');
+        this.loader.add('dark_spritesgamescene', 'assets/mobile/scene/spritesheets/dark_spritesgamescene.json');
         this.loader.add('top_rays', 'assets/mobile/scene/spritesheets/top_rays.json');
+        this.loader.add('dark_top_rays', 'assets/mobile/scene/spritesheets/dark_top_rays.json');
         this.loader.add('boat', 'assets/mobile/scene/spritesheets/boat.json');
+        this.loader.add('boat_dark', 'assets/mobile/scene/spritesheets/boat_dark.json');
         this.loader.add('sandreflection', 'assets/mobile/scene/spritesheets/sandreflection.json');
+        this.loader.add('dark_sandreflection', 'assets/mobile/scene/spritesheets/dark_sandreflection.json');
         this.loader.add('star_fish_animated', 'assets/mobile/scene/spritesheets/star_fish_animated.json');
+        this.loader.add('dark_star_fish_animated', 'assets/mobile/scene/spritesheets/dark_star_fish_animated.json');
         this.loader.add('static_corals', 'assets/mobile/scene/spritesheets/static_corals.json');
+        this.loader.add('dark_static_corals', 'assets/mobile/scene/spritesheets/dark_static_corals.json');
         this.loader.add('static_rocks', 'assets/mobile/scene/spritesheets/static_rocks.json');
+        this.loader.add('dark_static_rocks', 'assets/mobile/scene/spritesheets/dark_static_rocks.json');
         this.loader.add('leaves_left_animated', 'assets/mobile/scene/spritesheets/leaves_left_animated.json');
+        this.loader.add('dark_leaves_left_animated', 'assets/mobile/scene/spritesheets/dark_leaves_left_animated.json');
         this.loader.add('leaves_right_animated', 'assets/mobile/scene/spritesheets/leaves_right_animated.json');
+        this.loader.add('dark_leaves_right_animated', 'assets/mobile/scene/spritesheets/dark_leaves_right_animated.json');
         this.loader.add('green_leaves_left', 'assets/mobile/scene/spritesheets/green_leaves_left.json');
+        this.loader.add('dark_green_leaves_right', 'assets/mobile/scene/spritesheets/dark_green_leaves_right.json');
         this.loader.add('green_leaves_right', 'assets/mobile/scene/spritesheets/green_leaves_right.json');
         this.loader.add('leftstickleaves1', 'assets/mobile/scene/spritesheets/leftstickleaves1.json');
+        this.loader.add('leftstickleaves1_dark', 'assets/mobile/scene/spritesheets/leftstickleaves1_dark.json');
         this.loader.add('leftstickleaves2', 'assets/mobile/scene/spritesheets/leftstickleaves2.json');
+        this.loader.add('leftstickleaves2_dark', 'assets/mobile/scene/spritesheets/leftstickleaves2_dark.json');
         this.loader.add('rightstickleaves1', 'assets/mobile/scene/spritesheets/rightstickleaves1.json');
+        this.loader.add('dark_rightstickleaves1', 'assets/mobile/scene/spritesheets/dark_rightstickleaves1.json');
         this.loader.add('rightstickleaves2', 'assets/mobile/scene/spritesheets/rightstickleaves2.json');
+        this.loader.add('dark_rightstickleaves2', 'assets/mobile/scene/spritesheets/dark_rightstickleaves2.json');
         this.loader.add('bubblesleft', 'assets/mobile/scene/spritesheets/bubblesleft.json');
         //slot
         this.loader.add('my_slot', 'assets/mobile/slots/spritesheets/my_slot.json');
@@ -281,11 +295,18 @@ export default class Loader {
         this.loader.add('payline_9', 'assets/mobile/slots/spritesheets/mobilepaylines/payline_9.json');
         this.loader.add('reeleffectbg', 'assets/mobile/slots/spritesheets/reeleffectbg.json');
         this.loader.add('reeleffectlines', 'assets/mobile/slots/spritesheets/reeleffectlines.json');
+        this.loader.add('slot_2k', 'assets/mobile/slots/spritesheets/slot_2k.json');
+        this.loader.add('slot_3k', 'assets/mobile/slots/spritesheets/slot_3k.json');
+        this.loader.add('slot_5k', 'assets/mobile/slots/spritesheets/slot_5k.json');
+        this.loader.add('slot_x2', 'assets/mobile/slots/spritesheets/slot_x2.json');
+        this.loader.add('slot_x3', 'assets/mobile/slots/spritesheets/slot_x3.json');
+        this.loader.add('slot_x5', 'assets/mobile/slots/spritesheets/slot_x5.json');
         //popups
         this.loader.add('Excellent', 'assets/mobile/popups/spritesheets/Excellent.json');
         this.loader.add('Nice1', 'assets/mobile/popups/spritesheets/Nice1.json');
         this.loader.add('Impressive', 'assets/mobile/popups/spritesheets/Impressive.json');
         this.loader.add('coin', 'assets/mobile/popups/spritesheets/coin.json');
+        this.loader.add('won_spin', 'assets/mobile/popups/spritesheets/won_spin.json');
         //bonus
         this.loader.add('bonusgame', 'assets/mobile/bonus/spritesheets/bonus.json');
         this.loader.add('bonusgold', 'assets/mobile/bonus/spritesheets/bonusgold.json');
@@ -295,11 +316,13 @@ export default class Loader {
         this.loader.add('new_controllers', 'assets/mobile/slots/spritesheets/new_controllers.json');
         //scene
         this.loader.add('leftcoral', 'assets/mobile/scene_mobile/spritesheets/left_coral.json');
+        this.loader.add('dark_left_coral', 'assets/mobile/scene/spritesheets/dark_left_coral.json');
         this.loader.add('staticelements', 'assets/mobile/scene_mobile/spritesheets/static_images.json');
         this.loader.add('leavesleft', 'assets/mobile/scene_mobile/spritesheets/leaves_left.json');
         this.loader.add('light_rays', 'assets/mobile/scene_mobile/spritesheets/light_rays.json');
         // right scene
         this.loader.add('rightcoral', 'assets/mobile/scene_mobile/spritesheets/right_coral.json');
+        this.loader.add('dark_right_coral', 'assets/mobile/scene/spritesheets/dark_right_coral.json');
         this.loader.add('rightblueleaf', 'assets/mobile/scene_mobile/spritesheets/right_blue_leaf.json');
         this.loader.add('leavesright', 'assets/mobile/scene_mobile/spritesheets/leaves_right.json');
         this.loader.add('greenstick', 'assets/mobile/scene_mobile/spritesheets/green_stick.json');

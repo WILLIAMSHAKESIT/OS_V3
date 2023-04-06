@@ -134,7 +134,7 @@ export default class Game {
     }
 
     private animateBubbles(){
-        let duration = 5;
+        let duration = 4;
         this.bubbles.forEach((element, index) => {
             let interval = duration * index;
             let show = setTimeout(() => {

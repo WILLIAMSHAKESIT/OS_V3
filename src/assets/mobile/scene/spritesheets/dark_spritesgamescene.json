@@ -1,0 +1,55 @@
+{
+	"frames": {
+		"dark_gamebg.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 1152,
+				"h": 648
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1152,
+				"h": 648
+			},
+			"sourceSize": {
+				"w": 1152,
+				"h": 648
+			}
+		},
+		"dark_sand.png": {
+			"frame": {
+				"x": 1,
+				"y": 651,
+				"w": 1344,
+				"h": 558
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1344,
+				"h": 558
+			},
+			"sourceSize": {
+				"w": 1344,
+				"h": 558
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "dark_spritesgamescene.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1346,
+			"h": 1210
+		},
+		"scale": "1"
+	}
+}
