@@ -132,6 +132,8 @@ export default class Loader {
        
        console.log(this.app.screen.width)
 
+        this.top_bg.width = this.app.screen.width;
+       
     }
 
     private createBackground(){
@@ -146,7 +148,6 @@ export default class Loader {
 
         //mountain
         this.top_mountain = Functions.loadSprite(this.app.loader, 'top_assets', 'top_mountain.png', false);
-        this.top_mountain.width = this.app.screen.width;
         this.top_mountain.height = 1600;
         
         this.container.addChild(this.top_mountain);

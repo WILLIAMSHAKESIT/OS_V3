@@ -20,13 +20,11 @@ export default class Game {
     //read only
     private readonly baseWidth: number = 1920;
     private readonly baseHeight: number = 1080;
-    
 
     constructor() {
         this.app = new PIXI.Application({ width: this.baseWidth, height: this.baseHeight, antialias: false});
         window.document.body.appendChild(this.app.view);
         new Loader(this.app, this.init.bind(this));
-
     }
     private init(){
         this.overallticker = new PIXI.Ticker();
@@ -136,7 +134,7 @@ export default class Game {
     }
 
     private animateBubbles(){
-        let duration = 7;
+        let duration = 5;
         this.bubbles.forEach((element, index) => {
             let interval = duration * index;
             let show = setTimeout(() => {

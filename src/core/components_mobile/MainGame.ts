@@ -85,8 +85,8 @@ export default class MainGame {
         this.app = app;
         this.container = new PIXI.Container();
         this.fishcontainer = new PIXI.Container();
-        this.stopbtn = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'play_button_clicked.png', false);
-        this.playbtn = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'play_button.png', false);
+        this.stopbtn = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'stop_btn.png', false);
+        this.playbtn = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'play_btn.png', false);
         this.init();
     }
 
@@ -106,10 +106,58 @@ export default class MainGame {
         this.screenSize()
     }
     
+    // screen size checking
     private screenSize(){
         this.screenSettings = Functions.screenSize();
+        let baseposy = (this.screenSettings.game.height - this.screenSettings.game.safeHeight);
+        let baseposx = (this.screenSettings.game.width - this.screenSettings.game.safeWidth);
+
         if(this.screenSettings.screentype == "landscape"){
-            
+            //slot
+            this.slotgame.container.width = (this.screenSettings.baseWidth)
+            this.slotgame.container.height = (this.screenSettings.baseHeight - (baseposy*2))
+            this.slotgame.container.x = 0
+            //controller
+            this.controller.menu_button.scale.set(1.2)
+            this.controller.menu_button.x = this.slotgame.container.x + 155
+            //controller
+            this.controller.info_button.scale.set(1.2)
+            this.controller.info_button.x = (this.slotgame.container.x + this.slotgame.container.width) - (this.controller.info_button.width + 180)
+            this.controller.play_container.x = this.screenSettings.game.width + this.screenSettings.game.safeWidth
+            this.controller.play_container.y = (this.screenSettings.baseHeight - this.controller.play_container.height)/2
+            this.controller.menu_button.y = (this.slotgame.container.height - this.controller.menu_button._height)
+            this.controller.info_button.y = (this.slotgame.container.height - this.controller.info_button._height) - 10
+            //check if is safe width
+            if(this.screenSettings.isSafe == 'A'){
+                this.slotgame.container.y = baseposy * 1.1
+                //controller
+                this.controller.play_container.x = this.screenSettings.baseWidth - (this.controller.play_container.width*1.2)
+                this.controller.info_button.y = (this.slotgame.container.height - this.controller.info_button._height) - 85
+                this.controller.menu_button.y = (this.slotgame.container.height - (this.controller.menu_button.height/1.5))
+            }
+            if(this.screenSettings.isSafe == 'B'){
+                this.slotgame.container.y = (this.screenSettings.newGameY + this.screenSettings.baseHeight)- this.slotgame.container.height
+                this.controller.play_container.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.play_container.width*1.2)
+                this.controller.menu_button.y = (this.slotgame.container.y + this.slotgame.container.height) - (this.controller.menu_button.height*1.4)
+                this.controller.info_button.y = (this.slotgame.container.y + this.slotgame.container.height) - (this.controller.info_button.height*1.3)
+            }
+            if(this.screenSettings.isSafe == 'C'){
+                this.slotgame.container.y = (this.screenSettings.baseHeight - this.slotgame.container.height)
+                this.controller.play_container.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.play_container.width*1.5)
+            }
+            if(this.screenSettings.isSafe == 'D'){
+                this.slotgame.container.y = (this.screenSettings.baseHeight - this.slotgame.container.height)
+                this.controller.play_container.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.play_container.width*1.5)
+            }
+            this.controller.paylinetopcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinetopcontainer.width)/2
+            this.controller.paylinetopcontainer.y = ((this.slotgame.container.y + this.slotgame.container.height) -( this.controller.paylinetopcontainer.height*1.4))  
+            this.controller.paylinebottomcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinebottomcontainer.width)/2
+            this.controller.paylinebottomcontainer.y = (this.controller.paylinetopcontainer.y - (this.controller.paylinebottomcontainer.height*1.2))
+            this.controller.balancevalue.x = ((this.slotgame.container.x + this.slotgame.container.width)) - (this.controller.balancevalue.width*2.5)
+            console.log(this.controller.paylinebottomcontainer.x)
+            this.controller.balancevalue.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.betvalue.height*1.3))  
+            this.controller.betvalue.x = (768 + (352-(this.controller.betvalue.width/2)))/2
+            this.controller.betvalue.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.betvalue.height*1.3))  
         }
         this.sandbg.height = Functions.scaleSizeFixedWidth(this.screenSettings.baseWidth, this.sandbg);
         this.sandbg.width = this.screenSettings.baseWidth;
@@ -118,11 +166,12 @@ export default class MainGame {
         this.sandreflection.width = this.screenSettings.baseWidth;
         this.sandreflection.position.y = this.screenSettings.baseHeight - this.sandreflection.height;
         this.starfishanimated.position.x = (this.screenSettings.baseWidth - this.starfishanimated.width) / 2;
-        // this.starfishanimated.position.y = (this.screenSettings.baseHeight) - starfishposy;
         this.leftcorals.position.y = this.screenSettings.baseHeight - this.leftcorals.height;
         this.leftcorals.position.x = 0;
         this.rightcorals.position.y = this.screenSettings.baseHeight - this.rightcorals.height;
-        this.rightcorals.position.x = this.screenSettings.baseWidth - this.rightcorals.width;
+        this.rightcorals.position.x = this.screenSettings.baseWidth - (this.rightcorals.width - 20);
+        this.starfishanimated.position.y = (this.screenSettings.baseHeight - this.starfishanimated.height);
+        this.starfishanimated.position.x = (this.screenSettings.baseWidth - this.starfishanimated.width)/2;
     }
 
     private createNiceOne(win: number){
@@ -163,25 +212,24 @@ export default class MainGame {
         this.controller.play_container.position.y = (this.app.screen.height - this.controller.play_container.height);
 
         //events
-        // this.controller.singleplay_button.addListener("pointerdown", () => {
-        //     if(this.autoplay){
-        //         if(!this.slotgame.startreel){
-        //             this.autostop = true;
-        //         }
-        //         if(this.slotgame.enlargecharacters){
-        //             this.autospin = true;
-        //             this.slotgame.enlarge.duration(.01);
-        //             this.slotgame.paylineanimation.forEach(element => {
-        //                 element.duration(.01);
-        //                 element.delay(.01);
-        //             });
-        //         }
-        //         this.stopAutoPlay();
-        //     }
-        //     else{
-        //         this.quickPlay();
-        //     }
-        // });
+        this.controller.singleplay_button.addListener("pointerdown", () => {
+            if(this.autoplay){
+                if(!this.slotgame.startreel){
+                    this.autostop = true;
+                }
+                if(this.slotgame.enlargecharacters){
+                    this.autospin = true;
+                    this.slotgame.enlarge.duration(.01);
+                    this.slotgame.paylineanimation.forEach(element => {
+                        element.duration(.01);
+                        element.delay(.01);
+                    });
+                }
+                this.stopAutoPlay();
+            }else{
+                this.quickPlay();
+            }
+        });
     }
 
     private openModal(bool: Boolean){
@@ -214,23 +262,22 @@ export default class MainGame {
     private createSlot(){
         this.slotgame = new Slot(this.app, this.updateBottomPayline.bind(this), this.updateBottomPayline2.bind(this), this.changeButton.bind(this), this.updateTopPayline.bind(this), this.setAutoSpinText.bind(this), this.updateBalanceDecrease.bind(this), this.setTrueButtonsAfterSpin.bind(this), this.updateBalanceIncrease.bind(this), this.bonusGame.bind(this));
         this.container.addChild(this.slotgame.container);
-        
     }
 
     private updateBottomPayline(text: any){
         this.controller.paylinebottomcontainer.removeChildren();
         this.controller.paylinetext.text = text;
         this.controller.paylinebottomcontainer.addChild(this.controller.paylinetext);
-        this.controller.paylinebottomcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinebottomcontainer.width) / 2;
-        this.controller.paylinebottomcontainer.position.y = ((this.controller.payline_box.height - this.controller.paylinebottomcontainer.height) / 2) + 20;
+        this.controller.paylinebottomcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinebottomcontainer.width)/2
+        this.controller.paylinebottomcontainer.y = (this.controller.paylinetopcontainer.y - (this.controller.paylinebottomcontainer.height*1.2))
     }
 
     private updateTopPayline(text: any){
         this.controller.paylinetopcontainer.removeChildren();
         this.controller.tapspacetext.text = text;
         this.controller.paylinetopcontainer.addChild(this.controller.tapspacetext);
-        this.controller.paylinetopcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinetopcontainer.width) / 2;
-        this.controller.paylinetopcontainer.position.y = 20;
+        this.controller.paylinetopcontainer.x = ((this.slotgame.container.x + this.slotgame.container.width) - this.controller.paylinetopcontainer.width)/2
+        this.controller.paylinetopcontainer.y = ((this.slotgame.container.y + this.slotgame.container.height) -( this.controller.paylinetopcontainer.height*1.4))  
     }
 
     private updateBottomPayline2(paylines_symbols: any, paylines_pay: any, pattern: any){
@@ -257,8 +304,8 @@ export default class MainGame {
         newtext.y = (this.controller.paylinetopcontainer.height - newtext.height) / 2;
         newtext.x = newcontainer.x + newcontainer.width + 5;
         
-        this.controller.paylinetopcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinetopcontainer.width) / 2;
-        this.controller.paylinetopcontainer.position.y = 20;
+        // this.controller.paylinetopcontainer.position.x = (this.controller.payline_box.width - this.controller.paylinetopcontainer.width) / 2;
+        // this.controller.paylinetopcontainer.position.y = 20;
 
     }
 
@@ -280,7 +327,7 @@ export default class MainGame {
         //boat
         this.boat = Functions.loadSprite(this.app.loader, 'boat', '', true);
         this.boat.animationSpeed = .2;
-        this.boat.position.y = this.app.screen.height / 6;
+        this.boat.position.y = this.app.screen.height / 2.7;
         this.boat.position.x = (this.app.screen.width / 2) - (this.boat.width / 2);
         this.boat.play();
         this.myAnimationsSprites.push(this.boat);
@@ -308,18 +355,7 @@ export default class MainGame {
         this.sandreflection.position.y = this.app.screen.height - this.sandreflection.height
         this.container.addChild(this.sandreflection);
 
-        //star fish
-        this.starfishanimated = Functions.loadSprite(this.app.loader, 'star_fish_animated', '', true);
-        this.starfishanimated.animationSpeed = .15;
-        this.starfishanimated.position.y = 900;
-        this.starfishanimated.position.x = 800;
-        this.starfishanimated.play();
-        this.myAnimationsSprites.push(this.starfishanimated);
-        this.container.addChild(this.starfishanimated);
-
         // //corals
-        // this.createLeftCorals();
-        // this.createRightCorals();
         this.createCorals()
     }
     private createCorals(){
@@ -677,127 +713,6 @@ export default class MainGame {
         }
     }
 
-    // private createLeftCorals(){
-    //     //static corals
-    //     this.static_left_corals = Functions.loadSprite(this.app.loader, 'static_corals', 'Left_rock_corals.png', false);
-    //     this.static_left_corals.y = 20;
-    //     this.container.addChild(this.static_left_corals);
-    //     //leaves left
-    //     this.leaves_left = Functions.loadSprite(this.app.loader, 'leaves_left_animated', '', true);
-    //     this.leaves_left.animationSpeed = .15;
-    //     this.leaves_left.position.x = 280;
-    //     this.leaves_left.position.y = 730;
-    //     this.leaves_left.play();
-    //     this.myAnimationsSprites.push(this.leaves_left);
-    //     this.container.addChild(this.leaves_left);
-    //     //stick leaves 2
-    //     this.leftstickleaves2 = Functions.loadSprite(this.app.loader, 'leftstickleaves2', '', true);
-    //     this.leftstickleaves2.animationSpeed = .15;
-    //     this.leftstickleaves2.position.y = 530;
-    //     this.leftstickleaves2.position.x = 20;
-    //     this.leftstickleaves2.play();
-    //     this.myAnimationsSprites.push(this.leftstickleaves2);
-    //     this.container.addChild(this.leftstickleaves2);
-    //     //stick leaves 1
-    //     this.leftstickleaves1 = Functions.loadSprite(this.app.loader, 'leftstickleaves1', '', true);
-    //     this.leftstickleaves1.animationSpeed = .15;
-    //     this.leftstickleaves1.position.y = 630;
-    //     this.leftstickleaves1.position.x = 220;
-    //     this.leftstickleaves1.play();
-    //     this.myAnimationsSprites.push(this.leftstickleaves1);
-    //     this.container.addChild(this.leftstickleaves1);
-    //     //left rock2
-    //     this.leftrock2 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_rock_2nd.png', false);
-    //     this.leftrock2.position.y = 680;
-    //     this.container.addChild(this.leftrock2);
-    //     //left tube1
-    //     this.lefttube1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_tube_coral_1.png', false);
-    //     this.lefttube1.position.y = 730;
-    //     this.lefttube1.position.x = 20;
-    //     this.container.addChild(this.lefttube1);
-    //     //left rock1
-    //     this.leftrock1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'Left_rock_front.png', false);
-    //     this.leftrock1.position.x = -30;
-    //     this.leftrock1.position.y = 870;
-    //     this.container.addChild(this.leftrock1);
-    //     //bubbles left
-    //     this.bubblesleft = Functions.loadSprite(this.app.loader, 'bubblesleft', '', true);
-    //     this.bubblesleft.animationSpeed = .1;
-    //     this.bubblesleft.position.y = 350;
-    //     this.bubblesleft.position.x = 20;
-    //     this.bubblesleft.play();
-    //     this.myAnimationsSprites.push(this.bubblesleft);
-    //     this.container.addChild(this.bubblesleft);
-    // }
-
-    // private createRightCorals(){
-    //     //stick leaves 2
-    //     this.rightstickleaves2 = Functions.loadSprite(this.app.loader, 'rightstickleaves2', '', true);
-    //     this.rightstickleaves2.animationSpeed = .15;
-    //     this.rightstickleaves2.position.y = 620;
-    //     this.rightstickleaves2.position.x = 1400;
-    //     this.rightstickleaves2.play();
-    //     this.myAnimationsSprites.push(this.rightstickleaves2);
-    //     this.container.addChild(this.rightstickleaves2);
-    //     //right rock1
-    //     this.rightrock1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_behind_rock.png', false);
-    //     this.rightrock1.position.y = 700;
-    //     this.rightrock1.position.x = 1400;
-    //     this.container.addChild(this.rightrock1);
-    //     //leaves right
-    //     this.leaves_right = Functions.loadSprite(this.app.loader, 'leaves_right_animated', '', true);
-    //     this.leaves_right.animationSpeed = .15;
-    //     this.leaves_right.position.x = 1450;
-    //     this.leaves_right.position.y = 690;
-    //     this.leaves_right.play();
-    //     this.myAnimationsSprites.push(this.leaves_right);
-    //     this.container.addChild(this.leaves_right);
-    //     //static corals
-    //     this.static_right_corals = Functions.loadSprite(this.app.loader, 'static_corals', 'right_rock_corals.png', false);
-    //     this.static_right_corals.y = 20;
-    //     this.static_right_corals.x = this.app.stage.width - this.static_right_corals.width;
-    //     this.container.addChild(this.static_right_corals);
-    //     //green leave right 1
-    //     this.green_leaves_right1 = Functions.loadSprite(this.app.loader, 'green_leaves_right', '', true);
-    //     this.green_leaves_right1.animationSpeed = .15;
-    //     this.green_leaves_right1.position.y = 770;
-    //     this.green_leaves_right1.position.x = 1550;
-    //     this.green_leaves_right1.play();
-    //     this.myAnimationsSprites.push(this.green_leaves_right1);
-    //     this.container.addChild(this.green_leaves_right1);
-    //     //right rock2
-    //     this.rightrock2 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_rock_front.png', false);
-    //     this.rightrock2.position.y = 810;
-    //     this.rightrock2.position.x = this.app.stage.width - this.rightrock2.width;
-    //     this.container.addChild(this.rightrock2);
-    //     //stick leaves 1
-    //     this.rightstickleaves1 = Functions.loadSprite(this.app.loader, 'rightstickleaves1', '', true);
-    //     this.rightstickleaves1.animationSpeed = .15;
-    //     this.rightstickleaves1.position.y = 400;
-    //     this.rightstickleaves1.position.x = 1670;
-    //     this.rightstickleaves1.play();
-    //     this.myAnimationsSprites.push(this.rightstickleaves1);
-    //     this.container.addChild(this.rightstickleaves1);
-    //     //right tube1
-    //     this.righttube1 = Functions.loadSprite(this.app.loader, 'static_rocks', 'right_tube.png', false);
-    //     this.righttube1.position.y = 485;
-    //     this.righttube1.position.x = 1670;
-    //     this.container.addChild(this.righttube1);
-    //     //bubbles right
-    //     this.bubblesright = Functions.loadSprite(this.app.loader, 'bubblesleft', '', true);
-    //     this.bubblesright.animationSpeed = .1;
-    //     this.bubblesright.position.y = 100;
-    //     this.bubblesright.position.x = 1700;
-    //     this.bubblesright.play();
-    //     this.myAnimationsSprites.push(this.bubblesright);
-    //     this.container.addChild(this.bubblesright);
-    //     //blue coral
-    //     this.bluecoral = Functions.loadSprite(this.app.loader, 'static_corals', 'right_coral_2.png', false);
-    //     this.bluecoral.position.x = (this.app.screen.width - this.bluecoral.width);
-    //     this.bluecoral.position.y = 610;
-    //     this.container.addChild(this.bluecoral);
-    // }
-
     public stopMyanimations(){
         this.myAnimationsGSAP.forEach((element: any) => {
             element.pause();
@@ -826,7 +741,7 @@ export default class MainGame {
         if(this.controller.bet <= this.controller.balance){
             this.setButtonsBoolean(false);
             this.autoplay = true;
-            this.controller.playtext.style.fill = '#FF0000';
+            // this.controller.playtext.style.fill = '#FF0000';
             this.controller.singleplay_button.texture = this.stopbtn.texture;
             this.playcount = number;
         }
@@ -854,7 +769,7 @@ export default class MainGame {
     private stopAutoPlay(){
         this.playcount = 0;
         this.autoplay = false;
-        this.controller.playtext.style.fill = '#FFFFFF';
+        // this.controller.playtext.style.fill = '#FFFFFF';
         this.controller.singleplay_button.texture = this.playbtn.texture;
         this.setButtonsBoolean(true);
         this.updateTopPayline('TAP SPACE TO SKIP ANIMATIONS');
@@ -866,8 +781,8 @@ export default class MainGame {
         this.playcount--;
         this.controller.balance = newbal;
         this.controller.balancevalue.text = Functions.formatNumber(newbal);
-        this.controller.balancevalue.position.x = this.controller.balance_box.width - this.controller.balancevalue.width - 15;
-        this.controller.balancevalue.position.y = (this.controller.balance_box.height - this.controller.balancevalue.height) / 2.8;
+        // this.controller.balancevalue.position.x = this.controller.balance_box.width - this.controller.balancevalue.width - 15;
+        // this.controller.balancevalue.position.y = (this.controller.balance_box.height - this.controller.balancevalue.height) / 2.8;
         if(bet > newbal){
             this.stopAutoPlay();
         }
