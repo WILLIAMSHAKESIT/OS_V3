@@ -29,6 +29,7 @@ export default class MainGame {
     private mainbackground: PIXI.Sprite;
     private mountaintop: PIXI.Sprite;
     private sandbg: PIXI.Sprite;
+    private slotFrame: PIXI.Sprite
     //animated sprites
     private finalsurface: PIXI.AnimatedSprite;
     private palm1: PIXI.AnimatedSprite;
@@ -164,6 +165,7 @@ export default class MainGame {
         let baseposx = (this.screenSettings.game.width - this.screenSettings.game.safeWidth);
         if(this.screenSettings.screentype == "landscape"){
             //slot
+            this.slotFrame = Functions.loadSprite(this.app.loader, 'my_slot', 'frame.png', false); 
             this.slotgame.container.width = (this.screenSettings.baseWidth)
             this.slotgame.container.height = (this.screenSettings.baseHeight - (baseposy*2))
             this.slotgame.container.x = 0
@@ -208,6 +210,7 @@ export default class MainGame {
                 this.controller.menu_button.x = this.slotgame.container.x + (this.controller.menu_button.width*.7)
                 this.controller.info_button.x = (this.slotgame.container.x + this.slotgame.container.width) - (this.controller.info_button.width*3)
             }
+            this.boat.position.y = this.app.screen.height / 2.7;
             this.controller.modalinfo.container.scale.set(1.4)
             this.controller.modalautoplay.container.scale.set(1.4)
             this.controller.modalmenu.container.scale.set(1.4)
@@ -222,7 +225,31 @@ export default class MainGame {
             this.controller.creditContainer.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.creditContainer.height*1.3))  
             this.controller.betContainer.x = (this.slotgame.container.x + this.controller.betContainer.width)*1.3
             this.controller.betContainer.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.betContainer.height*1.3))  
+        }else{
+            this.slotFrame = Functions.loadSprite(this.app.loader, 'my_slot', 'frame_portrait.png', false); 
+            this.boat.position.y = this.app.screen.height / 1.5;
+            this.slotgame.container.x = -145
+            this.slotgame.container.width = 1896
+            this.slotgame.container.height = 1080
+            if(this.screenSettings.isSafe == 'A'){
+                this.slotgame.container.y = Math.abs(this.screenSettings.newGameY) * 2.4
+            }
+            if(this.screenSettings.isSafe == 'B'){
+                this.slotgame.container.y = Math.abs(this.screenSettings.newGameY) * 2.4
+            }
+            if(this.screenSettings.isSafe == 'C'){
+                this.slotgame.container.y = Math.abs(this.screenSettings.newGameY) * 2.3
+            }
+            if(this.screenSettings.isSafe == 'D'){
+                this.slotgame.container.y = 0
+            }
         }
+        this.slotgame.frameSprite.texture = this.slotFrame.texture
+        this.boat.position.x = (this.app.screen.width / 2) - (this.boat.width / 2);
+        this.lightRays.width = this.app.screen.width;
+        this.top_bg.width = this.app.screen.width;
+        this.top_bg.height = this.app.screen.height;
+        this.freespinboard.y = (this.app.screen.height - this.freespinboard.height) / 2;
         this.sandbg.height = Functions.scaleSizeFixedWidth(this.screenSettings.baseWidth, this.sandbg);
         this.sandbg.width = this.screenSettings.baseWidth;
         this.sandbg.position.y = this.screenSettings.baseHeight - this.sandbg.height;
@@ -451,7 +478,6 @@ export default class MainGame {
         this.controller.mybuttons.push(this.freespinboard);
         this.freespinboard.scale.set(.95);
         this.freespinboard.x = 15;
-        this.freespinboard.y = (this.container.height - this.freespinboard.height) / 2;
         this.container.addChild(this.freespinboard);
 
         const style = new PIXI.TextStyle({
@@ -622,14 +648,10 @@ export default class MainGame {
     private createBackground(){
         //background
         this.top_bg = Functions.loadSprite(this.app.loader, 'spritesgamescene', 'gamebg.jpg', false);
-        this.top_bg.width = this.app.screen.width;
-        this.top_bg.height = this.app.screen.height;
         this.container.addChild(this.top_bg);
-
 
         //light rays
         this.lightRays = Functions.loadSprite(this.app.loader, 'top_rays', '', true);
-        this.lightRays.width = this.app.screen.width;
         this.lightRays.animationSpeed = .2;
         this.lightRays.play();
         this.myAnimationsSprites.push(this.lightRays);
@@ -638,8 +660,6 @@ export default class MainGame {
         //boat
         this.boat = Functions.loadSprite(this.app.loader, 'boat', '', true);
         this.boat.animationSpeed = .2;
-        this.boat.position.y = this.app.screen.height / 2.7;
-        this.boat.position.x = (this.app.screen.width / 2) - (this.boat.width / 2);
         this.boat.play();
         this.myAnimationsSprites.push(this.boat);
         this.container.addChild(this.boat);
@@ -1011,8 +1031,8 @@ export default class MainGame {
             this.leftrock1.texture = this.org_leftrock1;
             this.rightrock2.texture = this.org_rightrock2;
             // this.righttube1.texture = this.org_righttube1;
-            this.leftCoral.texture = this.org_left_rock;
-            this.rightCoral.texture = this.org_right_rock;
+            this.leftCoral.textures = this.org_left_rock;
+            this.rightCoral.textures = this.org_right_rock;
             // this.bluecoral.texture = this.org_bluecoral;
             this.top_bg.texture = this.org_top_bg;
             this.sandbg.texture = this.org_sandbg;

@@ -84,6 +84,7 @@ export default class Slot {
     public lineeffect: Array<PIXI.AnimatedSprite> = [];
     public bgeffect: Array<PIXI.AnimatedSprite> = [];
     public isbonusgame: Boolean = false;
+    public frameSprite: PIXI.Sprite
 
     constructor(app: PIXI.Application, updatebottonpayline: (text: any) => void, updatebottonpayline2: (param1: any, param2: any,param3: any) => void, changebutton: () => void, updatetoppayline: (text: any) => void, autospintext: () => void, updatebalance: () => void, setbuttonstrue: () => void, updatebalancewin: (win: number) => void, bonusgame: (arr1: any, arr2: any) => void,congratspopup: () => void) {
         this.app = app;
@@ -233,8 +234,8 @@ export default class Slot {
 
     private createFrame(){
         //create slot frame
-        const frame = Functions.loadSprite(this.app.loader, 'my_slot', 'frame.png', false);
-        this.slotcontainer.addChild(frame);
+        this.frameSprite = Functions.loadSprite(this.app.loader, 'my_slot', 'frame.png', false);
+        this.slotcontainer.addChild(this.frameSprite);
 
         //create mask
         for(let i = 0; i < this.reellen; i++){
@@ -469,12 +470,36 @@ export default class Slot {
     }
 
     private checkCharacters(){
-        let bonus5_picks_random: Array<number> = [10,11,12,15,16,17,18,19,20];
-        let bonus4_picks_random: Array<number> = [7,8,9,10,11,12,13,14,15];
-        let bonus3_picks_random: Array<number> = [1,2,3,4,5,6,7,8,9];
-        let bonus5_picks_sort: Array<number> = [10,11,12,15,16,17,18,19,20];
-        let bonus4_picks_sort: Array<number> = [7,8,9,10,11,12,13,14,15];
-        let bonus3_picks_sort: Array<number> = [1,2,3,4,5,6,7,8,9];
+        let bonus5_picks_random: Array<number>;
+        let bonus4_picks_random: Array<number>;
+        let bonus3_picks_random: Array<number>;
+        let bonus5_picks_sort: Array<number>;
+        let bonus4_picks_sort: Array<number>;
+        let bonus3_picks_sort: Array<number>;
+        if(this.mybet == 1 || this.mybet == 5){
+            bonus5_picks_random = [3,4,5,6,7,8,9,10,11];
+            bonus4_picks_random = [2,3,4,5,6,7,8,9,10];
+            bonus3_picks_random = [1,2,3,4,5,6,7,8,9];
+            bonus5_picks_sort = [3,4,5,6,7,8,9,10,11];
+            bonus4_picks_sort = [2,3,4,5,6,7,8,9,10];
+            bonus3_picks_sort = [1,2,3,4,5,6,7,8,9];
+        }
+        else if(this.mybet == 10 || this.mybet == 20){
+            bonus5_picks_random = [5,6,7,8,9,10,11,12,13];
+            bonus4_picks_random = [4,5,6,7,8,9,10,11,12];
+            bonus3_picks_random = [3,4,5,6,7,8,9,10,11];
+            bonus5_picks_sort = [5,6,7,8,9,10,11,12,13];
+            bonus4_picks_sort = [4,5,6,7,8,9,10,11,12];
+            bonus3_picks_sort = [3,4,5,6,7,8,9,10,11];
+        }
+        else{
+            bonus5_picks_random = [7,8,9,10,11,12,13,14,15];
+            bonus4_picks_random = [6,7,8,9,10,11,12,13,14];
+            bonus3_picks_random = [5,6,7,8,9,10,11,12,13];
+            bonus5_picks_sort = [7,8,9,10,11,12,13,14,15];
+            bonus4_picks_sort = [6,7,8,9,10,11,12,13,14];
+            bonus3_picks_sort = [5,6,7,8,9,10,11,12,13];
+        }
         let randomresult: Array<number> = [];
         let sortresult: Array<number> = [];
         let characters: any = [];
@@ -844,20 +869,37 @@ export default class Slot {
         }
         if(tmp != 10){
             if(tmp == 9){
-                // //combo 3
-                // if(combinations[0].type == 9 && combinations[1].type == 9  && combinations[2].type == 9 ){
-                //     characters.push(combinations[0]);
-                //     characters.push(combinations[1]);
-                //     characters.push(combinations[2]);
-                // }
-                // //combo 4
-                // if(combinations[0].type == 9 && combinations[1].type == 9  && combinations[2].type == 9  && combinations[3].type == 9 ){
-                //     characters.push(combinations[3]);
-                // }
-                // //combo 5
-                // if(combinations[0].type == 9 && combinations[1].type == 9  && combinations[2].type == 9 && combinations[3].type == 9  && combinations[4].type == 9 ){
-                //     characters.push(combinations[4]);
-                // }
+                if(this.isbonusgame){
+                    // //combo 3
+                    // if(combinations[0].type == 9 && combinations[1].type == 9  && combinations[2].type == 9 ){
+                    //     characters.push(combinations[0]);
+                    //     characters.push(combinations[1]);
+                    //     characters.push(combinations[2]);
+                    // }
+                    // //combo 4
+                    // if(combinations[0].type == 9 && combinations[1].type == 9  && combinations[2].type == 9  && combinations[3].type == 9 ){
+                    //     characters.push(combinations[3]);
+                    // }
+                    // //combo 5
+                    // if(combinations[0].type == 9 && combinations[1].type == 9  && combinations[2].type == 9 && combinations[3].type == 9  && combinations[4].type == 9 ){
+                    //     characters.push(combinations[4]);
+                    // }
+                    //combo 3
+                    if((combinations[0].type == tmp || combinations[0].type == 10) && (combinations[1].type == tmp || combinations[1].type == 10) && (combinations[2].type == tmp || combinations[2].type == 10)){
+                        characters.push(combinations[0]);
+                        characters.push(combinations[1]);
+                        characters.push(combinations[2]);
+                        
+                    }
+                    //combo 4
+                    if((combinations[0].type == tmp || combinations[0].type == 10) && (combinations[1].type == tmp || combinations[1].type == 10) && (combinations[2].type == tmp || combinations[2].type == 10) && (combinations[3].type == tmp || combinations[3].type == 10)){
+                        characters.push(combinations[3]);
+                    }
+                    //combo 5
+                    if((combinations[0].type == tmp || combinations[0].type == 10) && (combinations[1].type == tmp || combinations[1].type == 10) && (combinations[2].type == tmp || combinations[2].type == 10) && (combinations[3].type == tmp || combinations[3].type == 10) && (combinations[4].type == tmp || combinations[4].type == 10)){
+                        characters.push(combinations[4]);
+                    }
+                }
             }
             else{
                 //combo 3

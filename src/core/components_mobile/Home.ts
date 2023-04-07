@@ -120,6 +120,8 @@ export default class Loader {
         }
         this.top_bg.height = this.app.screen.height;
         this.finalsurface.height = 400
+        this.finalsurface.width = this.app.screen.width
+        this.finalsurface.y = (this.top_mountain.y + this.top_mountain.height) - 150
         this.homeplaybtn.position.x = (this.rightcontainer.width / 2);
         this.top_bg.width = this.app.screen.width;
         this.top_mountain.width = this.app.screen.width;
