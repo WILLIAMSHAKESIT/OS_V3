@@ -41,6 +41,14 @@ export default class Game {
         this.overallticker.add(this.allAnimations.bind(this));
         this.overallticker.start();
         this.createHome();
+        document.addEventListener("visibilitychange", ()=> {
+            if (document.hidden){
+                Howler.mute(true)
+            } else {
+              
+                Howler.mute(false)
+            }
+        });
     }
 
     // sounds methods
