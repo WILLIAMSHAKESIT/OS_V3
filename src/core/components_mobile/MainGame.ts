@@ -170,10 +170,17 @@ export default class MainGame {
             this.slotgame.container.height = (this.screenSettings.baseHeight - (baseposy*2))
             this.slotgame.container.x = 0
             //controller
+            this.controller.container.visible = true
+            this.controller.controller_parent_portrait.visible = false
             this.controller.menu_button.scale.set(1.2)
             this.controller.menu_button.x = this.slotgame.container.x + 155
             //controller
             this.controller.info_button.scale.set(1.2)
+            this.controller.singleplay_button.scale.set(1)
+            this.controller.autoplay_button.scale.set(1)
+            this.controller.singleplay_button.position.x = (this.controller.play_container.width - this.controller.singleplay_button.width) / 2;
+            this.controller.autoplay_button.position.x = (this.controller.play_container.width - this.controller.autoplay_button.width) / 2;
+            this.controller.autoplay_button.position.y = this.controller.singleplay_button.height + 30;
             this.controller.info_button.x = (this.slotgame.container.x + this.slotgame.container.width) - (this.controller.info_button.width + 180)
             this.controller.play_container.x = this.screenSettings.game.width + this.screenSettings.game.safeWidth
             this.controller.play_container.y = (this.screenSettings.baseHeight - this.controller.play_container.height)/2
@@ -226,23 +233,43 @@ export default class MainGame {
             this.controller.betContainer.x = (this.slotgame.container.x + this.controller.betContainer.width)*1.3
             this.controller.betContainer.y = ((this.slotgame.container.y + this.slotgame.container.height) - ( this.controller.betContainer.height*1.3))  
         }else{
+            this.controller.container.visible = false
+            this.controller.controller_parent_portrait.visible = true
             this.slotFrame = Functions.loadSprite(this.app.loader, 'my_slot', 'frame_portrait.png', false); 
             this.boat.position.y = this.app.screen.height / 1.5;
             this.slotgame.container.x = -145
             this.slotgame.container.width = 1896
             this.slotgame.container.height = 1080
             if(this.screenSettings.isSafe == 'A'){
+                this.controller.controller_parent_portrait.y = (this.screenSettings.newGameY + this.screenSettings.baseHeight) - (this.controller.controller_parent_portrait.height*1.16)
                 this.slotgame.container.y = Math.abs(this.screenSettings.newGameY) * 2.4
+                this.controller.info_button_portrait.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.info_button_portrait.width*1.2)
             }
             if(this.screenSettings.isSafe == 'B'){
+                this.controller.controller_parent_portrait.y = (this.screenSettings.newGameY + this.screenSettings.baseHeight) - (this.controller.controller_parent_portrait.height*1.1)
                 this.slotgame.container.y = Math.abs(this.screenSettings.newGameY) * 2.4
+                this.controller.info_button_portrait.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.info_button_portrait.width*1.2)
             }
             if(this.screenSettings.isSafe == 'C'){
+                this.controller.controller_parent_portrait.y = (this.screenSettings.baseHeight - this.controller.controller_parent_portrait.height)
                 this.slotgame.container.y = Math.abs(this.screenSettings.newGameY) * 2.3
+                this.controller.info_button_portrait.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.info_button_portrait.width*1.2)
             }
             if(this.screenSettings.isSafe == 'D'){
+                this.controller.controller_parent_portrait.y = (this.screenSettings.baseHeight - this.controller.controller_parent_portrait.height)
                 this.slotgame.container.y = 0
+                this.controller.info_button_portrait.x = Math.abs(this.screenSettings.newGameX + this.screenSettings.baseWidth) - (this.controller.info_button_portrait.width*1.2)
             }
+            this.controller.play_container.y = this.controller.controller_parent_portrait.y
+            this.controller.play_container.x = 615
+            this.controller.singleplay_button.scale.set(1.5)
+            this.controller.singleplay_button.y = 20
+            this.controller.autoplay_button.scale.set(1.5)
+            this.controller.autoplay_button.x = (this.controller.singleplay_button.x + this.controller.singleplay_button.width)*1.5
+            this.controller.autoplay_button.y = 170
+            this.controller.menu_button_Portrait.x = (this.controller.play_container.x - (this.controller.menu_button_Portrait.width * 1.85))
+            this.controller.menu_button_Portrait.y =  (this.controller.play_container.y + (this.controller.menu_button_Portrait.height * 0.75))
+            this.controller.info_button_portrait.y = (this.controller.play_container.y - this.controller.info_button_portrait.height)
         }
         this.slotgame.frameSprite.texture = this.slotFrame.texture
         this.boat.position.x = (this.app.screen.width / 2) - (this.boat.width / 2);
@@ -316,6 +343,7 @@ export default class MainGame {
     private createController(){
         this.controller = new Controller(this.app, this.openModal.bind(this), this.setAutoPlay.bind(this), this.updateBonusPrize.bind(this));
         this.container.addChild(this.controller.container);
+        this.container.addChild(this.controller.containerPortrait);
         this.container.addChild(this.controller.play_container);
         this.controller.play_container.position.x = (this.app.screen.width - this.controller.play_container.width) - this.controller.marginside;
         this.controller.play_container.position.y = (this.app.screen.height - this.controller.play_container.height);
@@ -1418,7 +1446,6 @@ export default class MainGame {
     private stopAutoPlay(){
         this.playcount = 0;
         this.autoplay = false;
-        this.controller.playtext.style.fill = '#FFFFFF';
         this.controller.singleplay_button.texture = this.playbtn.texture;
         this.setButtonsBoolean(true);
         this.updateTopPayline('TAP SPACE TO SKIP ANIMATIONS');

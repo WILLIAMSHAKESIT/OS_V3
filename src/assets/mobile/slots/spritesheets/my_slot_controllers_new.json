@@ -1,8 +1,28 @@
 {
 	"frames": {
-		"autoplay_btn.png": {
+		"autobtn_portrait.png": {
 			"frame": {
 				"x": 1,
+				"y": 1,
+				"w": 236,
+				"h": 236
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 236
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 236
+			}
+		},
+		"autoplay_btn.png": {
+			"frame": {
+				"x": 239,
 				"y": 1,
 				"w": 169,
 				"h": 169
@@ -22,7 +42,7 @@
 		},
 		"bet_container.png": {
 			"frame": {
-				"x": 172,
+				"x": 410,
 				"y": 1,
 				"w": 338,
 				"h": 75
@@ -42,7 +62,7 @@
 		},
 		"bet_modal.png": {
 			"frame": {
-				"x": 512,
+				"x": 750,
 				"y": 1,
 				"w": 222,
 				"h": 75
@@ -62,8 +82,8 @@
 		},
 		"bet_modal_clicked.png": {
 			"frame": {
-				"x": 172,
-				"y": 78,
+				"x": 974,
+				"y": 1,
 				"w": 222,
 				"h": 75
 			},
@@ -82,8 +102,8 @@
 		},
 		"credit_container.png": {
 			"frame": {
-				"x": 172,
-				"y": 155,
+				"x": 1198,
+				"y": 1,
 				"w": 370,
 				"h": 75
 			},
@@ -102,7 +122,7 @@
 		},
 		"info_btn.png": {
 			"frame": {
-				"x": 544,
+				"x": 410,
 				"y": 78,
 				"w": 119,
 				"h": 130
@@ -120,10 +140,30 @@
 				"h": 130
 			}
 		},
+		"infobtn_portait.png": {
+			"frame": {
+				"x": 531,
+				"y": 78,
+				"w": 198,
+				"h": 215
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 198,
+				"h": 215
+			},
+			"sourceSize": {
+				"w": 198,
+				"h": 215
+			}
+		},
 		"lets_roll.png": {
 			"frame": {
-				"x": 1,
-				"y": 232,
+				"x": 731,
+				"y": 78,
 				"w": 544,
 				"h": 117
 			},
@@ -142,8 +182,8 @@
 		},
 		"lets_roll_clicked.png": {
 			"frame": {
-				"x": 1,
-				"y": 351,
+				"x": 731,
+				"y": 197,
 				"w": 544,
 				"h": 117
 			},
@@ -162,8 +202,8 @@
 		},
 		"menu_btn.png": {
 			"frame": {
-				"x": 1,
-				"y": 470,
+				"x": 1277,
+				"y": 78,
 				"w": 231,
 				"h": 110
 			},
@@ -180,10 +220,30 @@
 				"h": 110
 			}
 		},
+		"menubtn_portrait.png": {
+			"frame": {
+				"x": 1277,
+				"y": 190,
+				"w": 236,
+				"h": 236
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 236,
+				"h": 236
+			},
+			"sourceSize": {
+				"w": 236,
+				"h": 236
+			}
+		},
 		"modal_bet_box.png": {
 			"frame": {
-				"x": 736,
-				"y": 1,
+				"x": 1,
+				"y": 316,
 				"w": 528,
 				"h": 170
 			},
@@ -202,8 +262,8 @@
 		},
 		"modal_minus.png": {
 			"frame": {
-				"x": 665,
-				"y": 173,
+				"x": 239,
+				"y": 190,
 				"w": 112,
 				"h": 81
 			},
@@ -222,8 +282,8 @@
 		},
 		"modal_off.png": {
 			"frame": {
-				"x": 1,
-				"y": 173,
+				"x": 1510,
+				"y": 78,
 				"w": 85,
 				"h": 47
 			},
@@ -242,8 +302,8 @@
 		},
 		"modal_on.png": {
 			"frame": {
-				"x": 779,
-				"y": 173,
+				"x": 1510,
+				"y": 127,
 				"w": 85,
 				"h": 47
 			},
@@ -262,8 +322,8 @@
 		},
 		"modal_plus.png": {
 			"frame": {
-				"x": 866,
-				"y": 173,
+				"x": 531,
+				"y": 428,
 				"w": 112,
 				"h": 81
 			},
@@ -282,8 +342,8 @@
 		},
 		"next.png": {
 			"frame": {
-				"x": 980,
-				"y": 173,
+				"x": 1515,
+				"y": 176,
 				"w": 60,
 				"h": 72
 			},
@@ -302,8 +362,8 @@
 		},
 		"play_btn.png": {
 			"frame": {
-				"x": 980,
-				"y": 247,
+				"x": 645,
+				"y": 428,
 				"w": 253,
 				"h": 253
 			},
@@ -320,10 +380,50 @@
 				"h": 253
 			}
 		},
+		"playbtn_portrait.png": {
+			"frame": {
+				"x": 900,
+				"y": 428,
+				"w": 406,
+				"h": 405
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 406,
+				"h": 405
+			},
+			"sourceSize": {
+				"w": 406,
+				"h": 405
+			}
+		},
+		"portrait_frame.png": {
+			"frame": {
+				"x": 1597,
+				"y": 1,
+				"w": 1600,
+				"h": 825
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1600,
+				"h": 825
+			},
+			"sourceSize": {
+				"w": 1600,
+				"h": 825
+			}
+		},
 		"prev.png": {
 			"frame": {
-				"x": 1042,
-				"y": 173,
+				"x": 1,
+				"y": 828,
 				"w": 59,
 				"h": 72
 			},
@@ -342,8 +442,8 @@
 		},
 		"stop_btn.png": {
 			"frame": {
-				"x": 234,
-				"y": 502,
+				"x": 62,
+				"y": 828,
 				"w": 253,
 				"h": 253
 			},
@@ -367,8 +467,8 @@
 		"image": "my_slot_controllers_new.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 1265,
-			"h": 756
+			"w": 3198,
+			"h": 1082
 		},
 		"scale": "1"
 	}

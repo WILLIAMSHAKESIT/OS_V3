@@ -7,11 +7,15 @@ import ModalAutoplay from './ModalAutoplay';
 export default class Controller {
     private app: PIXI.Application;
     public container: PIXI.Container;
+    public containerPortrait:PIXI.Container
     public play_container: PIXI.Container;
     private controller_parent: PIXI.Sprite;
+    public controller_parent_portrait: PIXI.Sprite;
     public info_button: PIXI.Sprite;
+    public info_button_portrait: PIXI.Sprite;
     private sound_button: PIXI.Sprite;
     public menu_button: PIXI.Sprite;
+    public menu_button_Portrait: PIXI.Sprite;
     public singleplay_button: PIXI.Sprite;
     public autoplay_button: PIXI.Sprite;
     private bet_box: PIXI.Container;
@@ -45,6 +49,7 @@ export default class Controller {
 
     constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, autoplay: (number: number) => void,bonusprizeupdate: (val : number) => void) {
         this.container = new PIXI.Container();
+        this.containerPortrait = new PIXI.Container()
         this.paylinebottomcontainer = new PIXI.Container;
         this.paylinetopcontainer = new PIXI.Container;
         this.play_container = new PIXI.Container();
@@ -65,6 +70,16 @@ export default class Controller {
         this.createPlayButton();
         this.createBetBalanceBox();
         this.createPaylineBox();
+        //portrait
+        this.createParentPortrait()
+        this.createMenuButtonPortrait();
+        this.createInfoButtonPortrait()
+
+    }
+
+    private createParentPortrait(){
+        this.controller_parent_portrait = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'portrait_frame.png', false);
+        this.containerPortrait.addChild(this.controller_parent_portrait)
     }
 
     private createParent(){
@@ -75,12 +90,31 @@ export default class Controller {
     }
 
     private createInfoButton(){
-        this.info_button = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'info_btn.png', false);
+        this.info_button =  Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'info_btn.png', false);
         this.info_button.interactive = true;
         this.info_button.buttonMode = true;
         this.mybuttons.push(this.info_button);
         this.container.addChild(this.info_button);
         this.info_button.addListener("pointerdown", () => {
+            if(!this.showinfo){
+                this.openmodal(true);
+                this.showinfo = true;
+                this.mybuttons.forEach(element => {
+                    element.buttonMode = false;
+                    element.interactive = false;
+                });
+                this.app.stage.addChild(this.modalinfo.container);
+            }
+        });
+    }
+
+    private createInfoButtonPortrait(){
+        this.info_button_portrait =  Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'infobtn_portait.png', false);
+        this.info_button_portrait.interactive = true;
+        this.info_button_portrait.buttonMode = true;
+        this.mybuttons.push(this.info_button_portrait);
+        this.containerPortrait.addChild(this.info_button_portrait);
+        this.info_button_portrait.addListener("pointerdown", () => {
             if(!this.showinfo){
                 this.openmodal(true);
                 this.showinfo = true;
@@ -100,6 +134,25 @@ export default class Controller {
         this.mybuttons.push(this.menu_button);
         this.container.addChild(this.menu_button);
         this.menu_button.addListener("pointerdown", () => {
+            if(!this.showmenu){
+                this.openmodal(true);
+                this.showmenu = true;
+                this.mybuttons.forEach(element => {
+                    element.buttonMode = false;
+                    element.interactive = false;
+                });
+                this.app.stage.addChild(this.modalmenu.container);
+            }
+        });
+    }
+
+    private createMenuButtonPortrait(){
+        this.menu_button_Portrait = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'menubtn_portrait.png', false);
+        this.menu_button_Portrait.interactive = true;
+        this.menu_button_Portrait.buttonMode = true;
+        this.mybuttons.push(this.menu_button_Portrait);
+        this.containerPortrait.addChild(this.menu_button_Portrait);
+        this.menu_button_Portrait.addListener("pointerdown", () => {
             if(!this.showmenu){
                 this.openmodal(true);
                 this.showmenu = true;
