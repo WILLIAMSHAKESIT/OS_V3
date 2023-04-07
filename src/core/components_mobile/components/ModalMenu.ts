@@ -23,10 +23,16 @@ export default class ModalMenu {
     private bonusprizeupdate: (val : number) => void;
     private ambienttoggleon: PIXI.Sprite;
     private ambienttoggleoff: PIXI.Sprite;
+    private soundfxbtnon: PIXI.Sprite;
+    private soundfxbtnoff: PIXI.Sprite;
     private ambientbtn: PIXI.Sprite;
     private soundfxbtn: PIXI.Sprite;
+    public playSound: (index: number) => void; 
+    public muteSound: (type: string, bol:Boolean) => void;
+    private isMute:Boolean;
 
-    constructor(app: PIXI.Application, updatebet: (val: number) => void,bonusprizeupdate: (val : number) => void) {
+
+    constructor(app: PIXI.Application, updatebet: (val: number) => void,bonusprizeupdate: (val : number) => void, playSound: (number: number) => void, muteSound: (type: string, bol:Boolean) => void, isMute:Boolean) {
         this.app = app;
         this.container = new PIXI.Container();
         this.betvaluestyle = new PIXI.TextStyle({
@@ -50,8 +56,13 @@ export default class ModalMenu {
         this.bet_value = this.betArray[this.betIndex];
         this.updatebet = updatebet;
         this.bonusprizeupdate = bonusprizeupdate;
+        this.playSound = playSound;
+        this.muteSound = muteSound;
+        this.isMute = isMute;
         this.ambienttoggleon = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'toggle_on.png', false);
         this.ambienttoggleoff = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'toggle_off.png', false);
+        this.soundfxbtnon = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'toggle_on.png', false);
+        this.soundfxbtnoff = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'toggle_off.png', false);
         this.init();
     }
 
@@ -68,6 +79,14 @@ export default class ModalMenu {
         this.modal_close.position.y = 5;
         //main container
         this.container.position.x = (this.app.screen.width - this.container.width) / 2;
+
+        if(this.isMute){
+            this.ambientbtn.texture = this.ambienttoggleon.texture;
+            this.soundfxbtn.texture = this.ambienttoggleon.texture;
+        }else{
+            this.ambientbtn.texture = this.ambienttoggleoff.texture;
+            this.soundfxbtn.texture = this.ambienttoggleoff.texture;
+        }
     }
 
     private createOverlay(){
@@ -122,6 +141,7 @@ export default class ModalMenu {
         this.bet_add.interactive = true;
         this.bet_add.buttonMode = true;
         this.bet_add.addListener("pointerdown", () => {
+            this.playSound(9);
             this.betIndex++;
             this.bet_value = this.betArray[this.betIndex];
             this.updateBetBox();
@@ -142,6 +162,7 @@ export default class ModalMenu {
         this.bet_minus.interactive = false;
         this.bet_minus.buttonMode = true;
         this.bet_minus.addListener("pointerdown", () => {
+            this.playSound(9);
             this.betIndex--;
             this.bet_value = this.betArray[this.betIndex];
             this.updateBetBox();
@@ -222,9 +243,26 @@ export default class ModalMenu {
         this.soundfxbtn.buttonMode = true;
         this.soundfxbtn.interactive = true;
         this.ambientbtn.addListener("pointerdown", () => {
+            this.playSound(9)
             if(this.ambientbtn.texture == this.ambienttoggleoff.texture){
-                
+                this.ambientbtn.texture = this.ambienttoggleon.texture;
+                this.muteSound('ambient', false)
+            }else{
+                this.ambientbtn.texture = this.ambienttoggleoff.texture;
+                this.muteSound('ambient', true)
             }
+            
+        });
+        this.soundfxbtn.addListener("pointerdown", () => {
+            this.playSound(9)
+            if(this.soundfxbtn.texture == this.soundfxbtnoff.texture){
+                this.soundfxbtn.texture = this.soundfxbtnon.texture;
+                this.muteSound('sfx', false)
+            }else{
+                this.soundfxbtn.texture = this.soundfxbtnoff.texture;
+                this.muteSound('sfx', true)
+            }
+            
         });
     }
 

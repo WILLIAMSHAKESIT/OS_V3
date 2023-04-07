@@ -24,9 +24,18 @@ export default class Loader {
     private soundOff:PIXI.Sprite;
     private onAssetsLoaded: () => void;
 
-    constructor(app: PIXI.Application, onAssetsLoaded: () => void) {
+    //sounds
+    private soundsPath: string = 'assets/mobile/sounds/';
+    private sounds:(soundInit:Boolean,bgm: Array<any>) => void;
+    private playSound:(index:number) => void;
+    private soundsGlobal: Array<any> = [];
+    public isMute: Boolean;
+
+    constructor(app: PIXI.Application, onAssetsLoaded: () => void, sounds: (soundInit:Boolean,bgm: Array<any>) => void, playSound:(index:number) => void) {
         this.loader = app.loader;
         this.app = app;
+        this.sounds = sounds;
+        this.playSound = playSound;
         this.onAssetsLoaded = onAssetsLoaded;
         Promise.all([fontA.load(), fontB.load()]).then(this.startGame.bind(this));
     }
@@ -216,10 +225,16 @@ export default class Loader {
         this.soundOn.on('pointerdown',() =>{
             this.app.stage.removeChild(this.titleImage,this.agaLogo, this.loadingText, this.soundOff,this.soundOn,this.soundQuestion,this.background);
             this.onAssetsLoaded();
+            this.sounds(true,this.soundsGlobal)
+            Howler.mute(false)
+            this.isMute = true;
         });
         this.soundOff.on('pointerdown',() =>{
             this.app.stage.removeChild(this.titleImage,this.agaLogo, this.loadingText, this.soundOff,this.soundOn,this.soundQuestion,this.background);
             this.onAssetsLoaded();
+            this.sounds(false,this.soundsGlobal)
+            Howler.mute(true)
+            this.isMute = false;
         });
     }
 
@@ -326,5 +341,44 @@ export default class Loader {
         this.loader.add('rightblueleaf', 'assets/mobile/scene_mobile/spritesheets/right_blue_leaf.json');
         this.loader.add('leavesright', 'assets/mobile/scene_mobile/spritesheets/leaves_right.json');
         this.loader.add('greenstick', 'assets/mobile/scene_mobile/spritesheets/green_stick.json');
+
+
+        //sound
+        this.soundSetup(`${this.soundsPath}music/BGM.mp3`,true); //0 
+        this.soundSetup(`${this.soundsPath}sfx/bg/sea_shore.mp3`,true);//1 
+        this.soundSetup(`${this.soundsPath}sfx/bg/under_water.mp3`,true); //2
+        this.soundSetup(`${this.soundsPath}sfx/reel/reel_stop.mp3`,false); //3
+        this.soundSetup(`${this.soundsPath}sfx/plinko/ball_collide.mp3`,false); //4
+        this.soundSetup(`${this.soundsPath}sfx/plinko/item_win.mp3`,false); //5
+        this.soundSetup(`${this.soundsPath}sfx/ui/hover.mp3`,false); //6
+        this.soundSetup(`${this.soundsPath}sfx/reel/common_effect.mp3`,true); //7
+        this.soundSetup(`${this.soundsPath}sfx/reel/reel_spin.mp3`,false); //8
+        this.soundSetup(`${this.soundsPath}sfx/ui/click.mp3`,false); //9
+        this.soundSetup(`${this.soundsPath}sfx/bg/dive.mp3`,false); //10
+        this.soundSetup(`${this.soundsPath}sfx/plinko/item_lost.mp3`,false); //11
+        this.soundSetup(`${this.soundsPath}sfx/reel/bonus_impact.mp3`,false); //12
+        this.soundSetup(`${this.soundsPath}sfx/reel/wild_impact.mp3`,false); //13
+        this.soundSetup(`${this.soundsPath}sfx/reel/jackpot_impact.mp3`,false); //14
+        this.soundSetup(`${this.soundsPath}sfx/reel/bonus_power.mp3`,false); //15
+        this.soundSetup(`${this.soundsPath}sfx/bonus/clam_shake.mp3`,false); //16
+        this.soundSetup(`${this.soundsPath}sfx/bonus/gold_reveal.mp3`,false); //17
+        this.soundSetup(`${this.soundsPath}sfx/bonus/black_reveal.mp3`,false); //18
+        this.soundSetup(`${this.soundsPath}sfx/win/win.mp3`,false); //19
+        this.soundSetup(`${this.soundsPath}sfx/win/win_bg.mp3`,false); //20
+        this.soundSetup(`${this.soundsPath}sfx/bg/boat_creak.mp3`,true); //21
+        this.soundSetup(`${this.soundsPath}music/BGM_EVENT.mp3`,true); //22
+        this.soundSetup(`${this.soundsPath}music/BGM_EVENT2.mp3`,true); //23
+        this.soundSetup(`${this.soundsPath}sfx/win/win_7_12_spin.mp3`,false); //24
+        this.soundSetup(`${this.soundsPath}sfx/win/new_win.mp3`,false); //25
+        this.soundSetup(`${this.soundsPath}music/new_main_musicbg.mp3`,true); //26
+        this.soundSetup(`${this.soundsPath}sfx/bg/transition_sound_effects.mp3`,false); //27
+    }
+
+    private soundSetup(src:string,loop:boolean){
+        const audio = new Howl({
+            src: src,
+            loop:loop
+        })
+        this.soundsGlobal.push(audio)
     }
 }

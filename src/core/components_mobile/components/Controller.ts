@@ -13,7 +13,7 @@ export default class Controller {
     public controller_parent_portrait: PIXI.Sprite;
     public info_button: PIXI.Sprite;
     public info_button_portrait: PIXI.Sprite;
-    private sound_button: PIXI.Sprite;
+    public sound_button: PIXI.Sprite;
     public menu_button: PIXI.Sprite;
     public menu_button_Portrait: PIXI.Sprite;
     public singleplay_button: PIXI.Sprite;
@@ -47,7 +47,12 @@ export default class Controller {
     public paylinetopcontainer: PIXI.Container;
     public paylinebottomcontainer: PIXI.Container;
 
-    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, autoplay: (number: number) => void,bonusprizeupdate: (val : number) => void) {
+    private playSound: (index: number) => void; 
+    private muteSound: (type: string, bol:Boolean) => void;
+    private isMute: Boolean;
+
+
+    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, autoplay: (number: number) => void,bonusprizeupdate: (val : number) => void, playSound: (number: number) => void,  muteSound: (type: string, bol:Boolean) => void, isMute:Boolean) {
         this.container = new PIXI.Container();
         this.containerPortrait = new PIXI.Container()
         this.paylinebottomcontainer = new PIXI.Container;
@@ -57,6 +62,10 @@ export default class Controller {
         this.openmodal = openmodal;
         this.autoplay = autoplay;
         this.bonusprizeupdate = bonusprizeupdate;
+
+        this.playSound = playSound;
+        this.muteSound = muteSound;
+        this.isMute = isMute;
         this.init();
     }
 
@@ -96,6 +105,7 @@ export default class Controller {
         this.mybuttons.push(this.info_button);
         this.container.addChild(this.info_button);
         this.info_button.addListener("pointerdown", () => {
+            this.playSound(9)
             if(!this.showinfo){
                 this.openmodal(true);
                 this.showinfo = true;
@@ -115,6 +125,7 @@ export default class Controller {
         this.mybuttons.push(this.info_button_portrait);
         this.containerPortrait.addChild(this.info_button_portrait);
         this.info_button_portrait.addListener("pointerdown", () => {
+            this.playSound(9)
             if(!this.showinfo){
                 this.openmodal(true);
                 this.showinfo = true;
@@ -134,6 +145,7 @@ export default class Controller {
         this.mybuttons.push(this.menu_button);
         this.container.addChild(this.menu_button);
         this.menu_button.addListener("pointerdown", () => {
+            this.playSound(9)
             if(!this.showmenu){
                 this.openmodal(true);
                 this.showmenu = true;
@@ -153,6 +165,7 @@ export default class Controller {
         this.mybuttons.push(this.menu_button_Portrait);
         this.containerPortrait.addChild(this.menu_button_Portrait);
         this.menu_button_Portrait.addListener("pointerdown", () => {
+            this.playSound(9)
             if(!this.showmenu){
                 this.openmodal(true);
                 this.showmenu = true;
@@ -166,9 +179,10 @@ export default class Controller {
     }
 
     private createMenuModal(){
-        this.modalmenu = new ModalMenu(this.app, this.updateBet.bind(this),this.bonusprizeupdate.bind(this));
+        this.modalmenu = new ModalMenu(this.app, this.updateBet.bind(this),this.bonusprizeupdate.bind(this), this.playSound.bind(this), this.muteSound.bind(this),this.isMute);
         this.bet = this.modalmenu.bet_value;
         this.modalmenu.modal_close.addListener("pointerdown", () => {
+            this.playSound(9)
             this.showmenu = false;
             this.openmodal(false);
             this.app.stage.removeChild(this.modalmenu.container);
@@ -180,8 +194,9 @@ export default class Controller {
     }
 
     private createModalAutoplay(){
-        this.modalautoplay = new ModalAutoplay(this.app, this.closeAutoPlay.bind(this), this.autoplay.bind(this));
+        this.modalautoplay = new ModalAutoplay(this.app, this.closeAutoPlay.bind(this), this.autoplay.bind(this),this.playSound.bind(this));
         this.modalautoplay.modal_close.addListener("pointerdown", () => {
+            this.playSound(9)
             this.closeAutoPlay();
         });
     }
@@ -197,8 +212,9 @@ export default class Controller {
     }
 
     private createModalInfo(){
-        this.modalinfo = new ModalInfo(this.app);
+        this.modalinfo = new ModalInfo(this.app, this.playSound.bind(this));
         this.modalinfo.modal_close.addListener("pointerdown", () => {
+            this.playSound(9)
             this.showinfo = false;
             this.openmodal(false);
             this.app.stage.removeChild(this.modalinfo.container);
@@ -223,6 +239,7 @@ export default class Controller {
         this.mybuttons.push(this.autoplay_button);
         this.play_container.addChild(this.autoplay_button);
         this.autoplay_button.addListener("pointerdown", () => {
+            this.playSound(9)
             if(!this.showautoplay){
                 this.openmodal(true);
                 this.showautoplay = true;

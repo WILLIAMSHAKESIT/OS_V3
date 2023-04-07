@@ -18,8 +18,9 @@ export default class ModalAutoplay {
     public spintype: string = "normal";
     private closemodal: () => void;
     private autoplay: (number: number) => void
+    private playSound: (index:number) => void
 
-    constructor(app: PIXI.Application, closemodal: () => void, autoplay: (number: number) => void) {
+    constructor(app: PIXI.Application, closemodal: () => void, autoplay: (number: number) => void,  playSound:(index: number) => void) {
         this.app = app;
         this.betmodal = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'bet_modal.png', false);
         this.betmodalclicked = Functions.loadSprite(this.app.loader, 'my_slot_controllers', 'bet_modal_clicked.png', false);
@@ -34,6 +35,7 @@ export default class ModalAutoplay {
         });
         this.closemodal = closemodal;
         this.autoplay = autoplay;
+        this.playSound = playSound;
         this.init();
     }
 
@@ -156,6 +158,7 @@ export default class ModalAutoplay {
 
         //events
         this.quicktoggle.addListener("pointerdown", () => {
+            this.playSound(9)
             this.turbotoggle.texture = this.toggleoff.texture;
             if(this.quicktoggle.texture == this.toggleoff.texture){
                 this.spintype = "quick";
@@ -167,6 +170,7 @@ export default class ModalAutoplay {
             }
         });
         this.turbotoggle.addListener("pointerdown", () => {
+            this.playSound(9)
             this.quicktoggle.texture = this.toggleoff.texture;
             if(this.turbotoggle.texture == this.toggleoff.texture){
                 this.spintype = "turbo";
@@ -202,6 +206,7 @@ export default class ModalAutoplay {
         letrollbtn.interactive = true;
         letrollbtn.buttonMode = true;
         letrollbtn.addListener("pointerdown", () => {
+            this.playSound(9)
             if(this.playcount > 0){
                 letrollbtn.texture = letrollbtnclicked.texture;
                 let timeout = setTimeout(() => {
@@ -219,6 +224,7 @@ export default class ModalAutoplay {
 
     private btnClicked(btn: PIXI.Sprite, value: number){
         btn.addListener("pointerdown", () => {
+            this.playSound(9)
             this.resetTexture();
             this.playcount = value;
             btn.texture = this.betmodalclicked.texture;

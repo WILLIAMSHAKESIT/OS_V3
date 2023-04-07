@@ -19,8 +19,9 @@ export default class NiceOne {
     private overlayShow: any;
     private animateMoney: any;
     openmodal: (bool: Boolean) => void;
+    private soundVolume:(index:number) => void
 
-    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, money: number, spin:number) {
+    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, money: number, spin:number, soundVolume:(index:number) => void) {
         this.app = app;
         this.container = new PIXI.Container();
         this.coinsContainer = new PIXI.Container();
@@ -30,6 +31,7 @@ export default class NiceOne {
         this.spin = spin;
         console.log(spin);
         this.openmodal = openmodal;
+        this.soundVolume = soundVolume;
         this.init();
     }
 
@@ -42,6 +44,7 @@ export default class NiceOne {
     }
 
     public finishQuick(){
+        this.soundVolume(50)
         this.overlayScale.duration(0.01);
         this.animateMoney.duration(0.01);
         this.overlayShow.duration(0.01);

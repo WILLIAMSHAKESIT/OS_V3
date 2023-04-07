@@ -17,8 +17,10 @@ export default class Impressive {
     private overlayShow: any;
     private animateMoney: any;
     openmodal: (bool: Boolean) => void;
+    private soundStop: (index: number) => void; 
+    private soundVolume: (index: number) => void; 
 
-    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, money: number) {
+    constructor(app: PIXI.Application, openmodal: (bool: Boolean) => void, money: number, soundStop: (index: number) => void, soundVolume: (index: number) => void) {
         this.app = app;
         this.container = new PIXI.Container();
         this.coinsContainer = new PIXI.Container();
@@ -26,6 +28,8 @@ export default class Impressive {
         this.rightCoinAnimation = new PIXI.Container();
         this.money = money;
         this.openmodal = openmodal;
+        this.soundStop = soundStop;
+        this.soundVolume = soundVolume;
         this.init();
     }
 
@@ -38,6 +42,8 @@ export default class Impressive {
     }
 
     private finishQuick(){
+        this.soundStop(25);
+        this.soundVolume(50);
         this.overlayScale.duration(0.01);
         this.animateMoney.duration(0.01);
         this.overlayShow.duration(0.01);

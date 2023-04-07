@@ -17,16 +17,16 @@ export default class Slot {
     public reelsmaskcontainer: Array<any> = [];
     //slot variables
     private reelRandom: Array<Array<number>> = [
-        [1,10,2,3,1,11,4,3,10,2,4,8,1,2,11,5,9,1,5,10,2,6,8,6,10,3,9,7,1,7],
-        [5,2,4,1,4,5,10,6,11,1,6,8,3,9,2,1,10,4,3,1,11,7,8,2,11,1,3,2,10,7],
-        [1,5,10,11,4,1,2,5,2,2,8,1,6,10,4,3,9,2,11,6,7,1,7,3,2,3,1,8,3,5],
-        [1,5,2,3,1,4,11,3,2,5,9,4,2,1,8,4,1,8,10,3,8,1,8,11,7,6,2,10,7,6],
-        [1,5,5,10,6,2,4,1,3,8,6,1,11,4,3,2,7,10,9,2,7,3,9,1,8,2,10,1,8,8]
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
-        // [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7]
+        // [1,10,2,3,1,11,4,3,10,2,4,8,1,2,11,5,9,1,5,10,2,6,8,6,10,3,9,7,1,7],
+        // [5,2,4,1,4,5,10,6,11,1,6,8,3,9,2,1,10,4,3,1,11,7,8,2,11,1,3,2,10,7],
+        // [1,5,10,11,4,1,2,5,2,2,8,1,6,10,4,3,9,2,11,6,7,1,7,3,2,3,1,8,3,5],
+        // [1,5,2,3,1,4,11,3,2,5,9,4,2,1,8,4,1,8,10,3,8,1,8,11,7,6,2,10,7,6],
+        // [1,5,5,10,6,2,4,1,3,8,6,1,11,4,3,2,7,10,9,2,7,3,9,1,8,2,10,1,8,8]
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7],
+        [10,10,2,3,10,11,10,10,10,2,4,8,10,2,11,10,9,1,5,10,10,6,10,10,10,3,9,7,1,7]
     ];
     private rtp: number = 0;
     public charAssets: Array<any>;
@@ -84,9 +84,11 @@ export default class Slot {
     public lineeffect: Array<PIXI.AnimatedSprite> = [];
     public bgeffect: Array<PIXI.AnimatedSprite> = [];
     public isbonusgame: Boolean = false;
-    public frameSprite: PIXI.Sprite
+    public frameSprite: PIXI.Sprite;
+    private playSound: (index: number) => void;
+    private soundStop: (index: number) => void; 
 
-    constructor(app: PIXI.Application, updatebottonpayline: (text: any) => void, updatebottonpayline2: (param1: any, param2: any,param3: any) => void, changebutton: () => void, updatetoppayline: (text: any) => void, autospintext: () => void, updatebalance: () => void, setbuttonstrue: () => void, updatebalancewin: (win: number) => void, bonusgame: (arr1: any, arr2: any) => void,congratspopup: () => void) {
+    constructor(app: PIXI.Application, updatebottonpayline: (text: any) => void, updatebottonpayline2: (param1: any, param2: any,param3: any) => void, changebutton: () => void, updatetoppayline: (text: any) => void, autospintext: () => void, updatebalance: () => void, setbuttonstrue: () => void, updatebalancewin: (win: number) => void, bonusgame: (arr1: any, arr2: any) => void,congratspopup: () => void,  playSound: (index: number) => void, soundStop: (index: number) => void) {
         this.app = app;
         this.app.stage.sortableChildren = true;
         this.container = new PIXI.Container();
@@ -116,6 +118,8 @@ export default class Slot {
         this.updatebalancewin = updatebalancewin;
         this.bonusgame = bonusgame;
         this.congratspopup = congratspopup;
+        this.playSound = playSound;
+        this.soundStop = soundStop;
         this.init();
     }
 
@@ -365,8 +369,8 @@ export default class Slot {
                 (this.symbols[1][this.charlen - 1].type == 9 || this.symbols[1][this.charlen - 2].type == 9 || this.symbols[1][this.charlen - 3].type == 9) &&
                 (this.symbols[2][this.charlen - 1].type == 9 || this.symbols[2][this.charlen - 2].type == 9 || this.symbols[2][this.charlen - 3].type == 9)
             ){
-                if(this.interval > 0){
-                    // this.soundPlay(15)
+                if(this.interval >= 20){
+                    this.playSound(15)
                 }
                 this.reeleffectbgcontainer[0].visible = true;
                 this.lineeffect[0].play();
@@ -438,7 +442,7 @@ export default class Slot {
     }
 
     private spinReel(container: PIXI.Container, duration: number, index: number, repeat: number = 0){
-        // this.soundPlay(8)
+        this.playSound(8)
         let timeofspin = duration;
         if(this.interval == 5){
             timeofspin = .2;
@@ -449,7 +453,7 @@ export default class Slot {
             y: (this.topposy - 80) + this.bounceBackposy,
             repeat: repeat,
             onComplete: () => { 
-                // this.soundPlay(3)
+                this.playSound(3)
                 // this.checkSymbolSound(index)
                 // const stopSound = setTimeout(() =>{
                 //     clearTimeout(stopSound)
@@ -1068,12 +1072,12 @@ export default class Slot {
             yoyo: true,
             repeat: 3,
             onStart:() => {
-                // this.soundPlay(7)
+                this.playSound(7)
             },
             onComplete: () => {
                 this.enlarge.kill();
                 this.updateBlocksSize(0, false);
-                // this.soundStop(7);
+                this.soundStop(7);
                 new_char.forEach((char: any) => {
                     char.gotoAndStop(0);
                 });

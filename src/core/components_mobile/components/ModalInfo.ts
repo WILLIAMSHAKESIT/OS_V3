@@ -19,8 +19,10 @@ export default class ModalInfo {
     private secondItemContainer: PIXI.Container;
     private thirdItemContainer: PIXI.Container;
     private page: number = 1;
+    private playSound:(index: number) => void;
 
-    constructor(app: PIXI.Application) {
+
+    constructor(app: PIXI.Application,  playSound:(index: number) => void) {
         this.app = app;
         this.container = new PIXI.Container();
         this.firstItemContainer = new PIXI.Container();
@@ -55,6 +57,7 @@ export default class ModalInfo {
             fontWeight: 'bold',
             fill: '#ffffff'
         });
+        this.playSound = playSound;
         this.init();
     }
 
@@ -93,6 +96,7 @@ export default class ModalInfo {
         this.next_btn.buttonMode = true;
         this.prev_btn.buttonMode = true;
         this.next_btn.addListener("pointerdown", () => {
+            this.playSound(9)
             this.page++;
             if(this.page == 2){
                 this.prev_btn.interactive = true;
@@ -108,6 +112,7 @@ export default class ModalInfo {
             }
         });
         this.prev_btn.addListener("pointerdown", () => {
+            this.playSound(9)
             this.page--;
             if(this.page == 1){
                 this.prev_btn.interactive = true;

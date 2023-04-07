@@ -8,6 +8,10 @@ import Excellent from './components/Excellent';
 import Congrats from './components/Congrats';
 import Bonus from './Bonus';
 import gsap from 'gsap';
+import {Howler} from 'howler';
+import Loader from './Loader';
+
+
 
 export default class MainGame {
     private switchtheme: Boolean = false;
@@ -131,12 +135,26 @@ export default class MainGame {
     //screen variable
     private screenSettings: any;
 
-    constructor(app: PIXI.Application) {
+    //sounds
+    private isMute: Boolean;
+    private playSound: (index: number) => void; 
+    private soundStop: (index: number) => void; 
+    private muteSound: (type: string, bol:Boolean) => void; 
+    private soundVolume: (index: number) => void; 
+    private soundOffTexture:PIXI.Sprite;
+    private soundOnTexture:PIXI.Sprite;
+
+    constructor(app: PIXI.Application, playSound:(index:number)=>void, soundStop:(index:number)=>void ,muteSound: (type: string, bol:Boolean) => void, isMute:Boolean, soundVolume:(index:number)=>void,) {
         this.app = app;
         this.container = new PIXI.Container();
         this.fishcontainer = new PIXI.Container();
         this.stopbtn = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'stop_btn.png', false);
         this.playbtn = Functions.loadSprite(this.app.loader, 'my_slot_controllers_new', 'play_btn.png', false);
+        this.playSound = playSound;
+        this.soundStop = soundStop;
+        this.muteSound = muteSound;
+        this.soundVolume = soundVolume;
+        this.isMute = isMute;
         this.init();
     }
 
@@ -156,6 +174,15 @@ export default class MainGame {
                 this.screenSize()
         })    
         this.screenSize()
+
+        document.addEventListener("visibilitychange", ()=> {
+            if (document.hidden){
+                Howler.mute(true)
+            } else {
+              
+                Howler.mute(false)
+            }
+        });
     }
     
     // screen size checking
@@ -304,8 +331,10 @@ export default class MainGame {
             element.interactive = false;
             element.buttonMode = false;
         });
-        this.niceonepopup = new Niceone(this.app, this.openModalInPopup.bind(this), win);
+        this.niceonepopup = new Niceone(this.app, this.openModalInPopup.bind(this), win, this.soundStop.bind(this), this.soundVolume.bind(this));
         this.container.addChild(this.niceonepopup.container)
+        this.playSound(25);
+        this.soundVolume(25);
     }
 
     private createImpressive(win: number){
@@ -320,8 +349,10 @@ export default class MainGame {
             element.interactive = false;
             element.buttonMode = false;
         });
-        this.impressivepopup = new Impressive(this.app, this.openModalInPopup.bind(this), win);
+        this.impressivepopup = new Impressive(this.app, this.openModalInPopup.bind(this), win, this.soundStop.bind(this), this.soundVolume.bind(this));
         this.container.addChild(this.impressivepopup.container)
+        this.playSound(25);
+        this.soundVolume(25);
     }
 
     private createExcellent(win: number){
@@ -336,20 +367,36 @@ export default class MainGame {
             element.interactive = false;
             element.buttonMode = false;
         });
-        this.excellentpopup = new Excellent(this.app, this.openModalInPopup.bind(this), win);
+        this.excellentpopup = new Excellent(this.app, this.openModalInPopup.bind(this), win, this.soundStop.bind(this), this.soundVolume.bind(this));
         this.container.addChild(this.excellentpopup.container)
+        this.playSound(25);
+        this.soundVolume(25);
     }
 
     private createController(){
-        this.controller = new Controller(this.app, this.openModal.bind(this), this.setAutoPlay.bind(this), this.updateBonusPrize.bind(this));
+        this.controller = new Controller(this.app, this.openModal.bind(this), this.setAutoPlay.bind(this), this.updateBonusPrize.bind(this),  this.playSound.bind(this), this.muteSound.bind(this), this.isMute);
         this.container.addChild(this.controller.container);
         this.container.addChild(this.controller.containerPortrait);
         this.container.addChild(this.controller.play_container);
         this.controller.play_container.position.x = (this.app.screen.width - this.controller.play_container.width) - this.controller.marginside;
         this.controller.play_container.position.y = (this.app.screen.height - this.controller.play_container.height);
 
+        this.controller.info_button.addListener("mouseover", () => {
+            this.playSound(6)
+        })
+        this.controller.info_button_portrait.addListener("mouseover", () => {
+            this.playSound(6)
+        })
+        this.controller.menu_button.addListener("mouseover", () => {
+            this.playSound(6)
+        })
+        this.controller.menu_button_Portrait.addListener("mouseover", () => {
+            this.playSound(6)
+        })
+
         //events
         this.controller.singleplay_button.addListener("pointerdown", () => {
+            this.playSound(9)
             if(this.autoplay){
                 if(!this.slotgame.startreel){
                     this.autostop = true;
@@ -409,9 +456,11 @@ export default class MainGame {
     }
 
     private createSlot(){
-        this.slotgame = new Slot(this.app, this.updateBottomPayline.bind(this), this.updateBottomPayline2.bind(this), this.changeButton.bind(this), this.updateTopPayline.bind(this), this.setAutoSpinText.bind(this), this.updateBalanceDecrease.bind(this), this.setTrueButtonsAfterSpin.bind(this), this.updateBalanceIncrease.bind(this), this.bonusGame.bind(this), this.congratsPopup.bind(this));
+        this.slotgame = new Slot(this.app, this.updateBottomPayline.bind(this), this.updateBottomPayline2.bind(this), this.changeButton.bind(this), this.updateTopPayline.bind(this), this.setAutoSpinText.bind(this), this.updateBalanceDecrease.bind(this), this.setTrueButtonsAfterSpin.bind(this), this.updateBalanceIncrease.bind(this), this.bonusGame.bind(this), this.congratsPopup.bind(this), this.playSound.bind(this), this.soundStop.bind(this));
         this.container.addChild(this.slotgame.container);
-        
+        this.playSound(26)
+        this.soundStop(1)
+
     }
 
     private createWildsBoard(){
@@ -456,6 +505,7 @@ export default class MainGame {
         this.wildboardmoney.buttonMode = true;
 
         this.wildboardmultiplier.addListener("pointerdown", () => {
+            this.playSound(9)
             this.app.stage.removeChild(this.wildboardcontainer);
             this.slotgame.charAssets = [
                 { type : 0, value : 'slot_letter_j'},
@@ -477,6 +527,7 @@ export default class MainGame {
             this.transitionStarfish(true);
         });
         this.wildboardmoney.addListener("pointerdown", () => {
+            this.playSound(9)
             this.app.stage.removeChild(this.wildboardcontainer);
             this.slotgame.charAssets = [
                 { type : 0, value : 'slot_letter_k'},
@@ -521,6 +572,7 @@ export default class MainGame {
         this.freespinboard.addChild(this.bonusprizetext);
 
         this.freespinboard.addListener("pointerdown", () => {
+            this.playSound(9)
             this.controller.mybuttons.forEach(element => {
                element.interactive = false;
                element.buttonMode = false;
@@ -565,6 +617,7 @@ export default class MainGame {
 
         //event
         this.freespinreject.addListener("pointerdown", () => {
+            this.playSound(9)
             this.controller.mybuttons.forEach(element => {
                 element.interactive = true;
                 element.buttonMode = true;
@@ -574,6 +627,7 @@ export default class MainGame {
         });
 
         this.freespinaccept.addListener("pointerdown", () => {
+            this.playSound(9)
             // this.controller.mybuttons.forEach(element => {
             //     element.interactive = true;
             //     element.buttonMode = true;
@@ -892,7 +946,7 @@ export default class MainGame {
     }
 
     private createBonus(arr1: any, arr2: any){
-        this.bonusComponets = new Bonus(this.app, arr1, arr2, this.container, this.bonusGameDone.bind(this));
+        this.bonusComponets = new Bonus(this.app, arr1, arr2, this.container, this.bonusGameDone.bind(this), this.playSound.bind(this));
         this.bonusComponets.container.alpha = 0;
         this.app.stage.addChild(this.bonusComponets.container);
     }
@@ -950,6 +1004,8 @@ export default class MainGame {
 
     private changeBackground(bool: Boolean){
         if(bool){
+            this.soundStop(26);
+            this.playSound(23);
             this.isfreespinslot = true;
             this.slotgame.isbonusgame = true;
             //new texture
@@ -1042,6 +1098,8 @@ export default class MainGame {
             });
             this.slotgame.isbonusgame = false;
             this.slotgame.createBlocksFreeSpin();
+            this.soundStop(23);
+            this.playSound(26);
             //back to old
             this.boat.textures = this.org_boat;
             this.leftstickleaves1.textures = this.org_leftstickleaves1;
@@ -1180,6 +1238,7 @@ export default class MainGame {
     }
 
     private createBubbles(){
+        this.playSound(27);
         while(this.bubbles.length < 300){
             let bubble = {
                 x: Math.round(Functions.getRandomInt(-100, this.app.screen.width)),
@@ -1422,15 +1481,19 @@ export default class MainGame {
             element.interactive = false;
             element.buttonMode = false;
         });
-        this.congratspopup = new Congrats(this.app, this.openModalInPopup.bind(this), win, spin);
+        this.congratspopup = new Congrats(this.app, this.openModalInPopup.bind(this), win, spin, this.soundVolume.bind(this));
         this.container.addChild(this.congratspopup.container);
+        this.playSound(20);
+        this.soundVolume(25);
         this.congratspopup.overlay.addListener("pointerdown", ()=>{
+            this.playSound(9)
             this.congratspopup.finishQuick();
             this.createStarFish();
             this.animateStarFish();
             this.createBubbles();
             this.animateBubbles();
             this.transitionStarfish(false);
+            this.soundStop(20);
         })
     }
 
@@ -1482,7 +1545,7 @@ export default class MainGame {
         if(popup != 0){
             if(this.isfreespinslot){
                 if(!this.slotgame.isbonus && this.bonusoffer > 0){
-                    if(popup == 1){
+                    if(popup < 1){
                         this.createNiceOne(win);
                     }
                     else if(popup == 2){
@@ -1499,7 +1562,7 @@ export default class MainGame {
                 }
                 else{
                     if(!this.slotgame.isbonus){
-                        if(popup == 1){
+                        if(popup < 1){
                             this.createNiceOne(win);
                         }
                         else if(popup == 2){
@@ -1546,6 +1609,7 @@ export default class MainGame {
                 if(reel.length == 5){
                     this.autostop = false;
                     this.startgame = false;
+                    this.soundStop(15);
                     if(this.slotgame.isbonus){
                         this.slotgame.reeleffectbgcontainer.forEach((element, index) => {
                             element.visible = false;

@@ -53,10 +53,11 @@ export default class Loader {
     private bubblesSprites: Array<PIXI.Sprite> = [];
     private gamecontainer: PIXI.Container;
     private bonusgamedone: (offer: number) => void;
-    private top_bg:PIXI.Sprite
-    private top_mountain:PIXI.Sprite
+    private top_bg:PIXI.Sprite;
+    private top_mountain:PIXI.Sprite;
+    private playSound: (index: number) => void; 
 
-    constructor(app: PIXI.Application,arr1: any, arr2: any, container: PIXI.Container, bonusgamedone: (offer: number) => void) {
+    constructor(app: PIXI.Application,arr1: any, arr2: any, container: PIXI.Container, bonusgamedone: (offer: number) => void, playSound:(index:number) => void) {
         this.app = app;
         this.container = new PIXI.Container();
         this.bonuscontainer = new PIXI.Container();
@@ -71,6 +72,7 @@ export default class Loader {
         this.sortresult = arr2;
         this.gamecontainer = container;
         this.bonusgamedone = bonusgamedone;
+        this.playSound = playSound;
         this.bonusArr = [];
         this.bonusColorArr = [];
         this.bonusArr = this.randomresult;
@@ -329,6 +331,7 @@ export default class Loader {
         this.btnAccept.position.x = (this.bonusOffer.position.x - this.btnAccept.width) - 20;
         this.btnAccept.position.y = this.bonusOffer.position.y + 15;
         this.btnAccept.addListener("pointerdown", () => {
+            this.playSound(9)
             this.btnAccept.interactive = false;
             this.btnReject.interactive = false;
             let countdown = 3;
@@ -340,7 +343,7 @@ export default class Loader {
                         this.btnAccept.interactive = false;
                         this.btnAccept.alpha = 0;
                         this.btnReject.alpha = 0;
-                        // this.playSound(16);
+                        this.playSound(16);
                         this.clamSpriteContainer.forEach((element, index) => {
                             if(index != this.dontopenshell){
                                 const clamVibrate = gsap.to(this.clamSprite[index], {
@@ -404,6 +407,7 @@ export default class Loader {
         this.btnReject.position.y = this.bonusOffer.position.y + 15;
         this.btnReject.position.x = this.bonusOffer.position.x + this.bonusOffer.width + 20;
         this.btnReject.addListener("pointerdown", () => {
+            this.playSound(9)
             this.clamSprite.forEach(element => {
                 element.interactive = true;
             });
@@ -442,7 +446,8 @@ export default class Loader {
 
         this.clamSpriteContainer.forEach((element, index) => {
             this.clamSprite[index].addListener("pointerdown", () => {
-                // this.playSound(16)
+                this.playSound(9)
+                this.playSound(16)
                 this.clamSprite.forEach(element => {
                     element.interactive = false;
                 });
@@ -460,10 +465,10 @@ export default class Loader {
                         this.btnAccept.interactive = true;
                         if(index == this.min_index1 || index == this.min_index2 || index == this.min_index3){
                             this.updateHeaderText('YOU CHOOSE A BOMB SHELL!');
-                            // this.playSound(18)
+                            this.playSound(18)
                         }
                         else{
-                            // this.playSound(17)
+                            this.playSound(17)
                             if(this.clickCount == 0){
                                 this.updateHeaderText('YOU ALREADY USED THE 3 CLICK!');
                             }
@@ -530,6 +535,7 @@ export default class Loader {
     }
 
     private createBubbles(){
+        this.playSound(27)
         while(this.bubbles.length < 300){
             let bubble = {
                 x: Math.round(Functions.getRandomInt(-100, this.app.screen.width)),
